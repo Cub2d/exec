@@ -24,6 +24,7 @@ typedef struct	s_data {
 
 typedef struct s_map{
 	int i[2];
+	int height;
 	char *av;
 	int fd;
 }		t_map;
@@ -58,6 +59,7 @@ int		keys_hook(int key, t_vars *vars);
 void	new_win(t_vars *vars, int height, int fd);
 void	ft_line_counter(t_vars *vars);
 void	DrawSquare(t_vars *vars, int x, int y, int color);
+void	map_maker(t_vars *vars);
 void	ft_putstr(char *str);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
