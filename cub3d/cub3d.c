@@ -11,37 +11,23 @@ int	keys_hook(int key, t_vars *vars)
 	static const double PI = 3.1415926535;
 	if (key == 53)
 		exit(1);
-	if (key == 13)
+	if (key == 13 || key == 126)
 	{
-		// go
-		vars->x1 = vars->x1 +  (10 * cos(vars->angle * PI / 180));
-		vars->y1 = vars->y1 +  (10 * sin(vars->angle * PI / 180));
+		vars->x1 = vars->x1 +  (5 * cos(vars->angle * PI / 180));
+		vars->y1 = vars->y1 +  (5 * sin(vars->angle * PI / 180));
 	}
-	if (key == 0)
+	if (key == 1 || key == 125)
 	{
-		//left
-		vars->x1 -= 5;
-	}
-	if (key == 1)
-	{
-		// back
-		vars->x1 = vars->x1 -  (10 * cos(vars->angle * PI / 180));
-		vars->y1 = vars->y1 -  (10 * sin(vars->angle * PI / 180));
-	}
-	if (key == 2)
-	{
-		// right
-		vars->x1 += 5;
+		vars->x1 = vars->x1 -  (5 * cos(vars->angle * PI / 180));
+		vars->y1 = vars->y1 -  (5 * sin(vars->angle * PI / 180));
 	}
 	if (key == 124)
 	{
-		//right rotation
-		vars->angle += 10;
+		vars->angle += 2;
 	}
 	if (key == 123)
 	{
-		// left rotation
-		vars->angle -= 10;
+		vars->angle -= 2;
 	}
 	DrawCircle(100, vars);
 	return (0);
@@ -93,10 +79,6 @@ void DrawCircle(int r, t_vars *vars)
 		left = 360 - (30 - vars->angle);
 	else
 		left = vars->angle - 30;
-//	mlx_clear_window(vars->mlx, vars->win);
-//	vars->img.img = mlx_new_image(vars->mlx, 1600, 550);
-//	vars->img.addr = mlx_get_data_addr(vars->img.img, &vars->img.bits_per_pixel,
-//				&vars->img.line_length, &vars->img.endian);
 	map_maker(vars);
 	calculation(vars, left, right, r);
 }
@@ -122,6 +104,6 @@ int	main(int ac, char **av)
 	// ft_line_counter(i, av[1], &vars);
 	// new_win(&vars, i[0], fd);
 	mlx_hook(vars.win, 17, 0, salam, &vars);
-	mlx_key_hook(vars.win, keys_hook, &vars);
+	mlx_hook(vars.win, 2, 0, keys_hook, &vars);
 	mlx_loop(vars.mlx);
 }
