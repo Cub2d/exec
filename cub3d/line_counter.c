@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 19:40:27 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/10/16 15:21:16 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/18 15:11:34 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,18 @@ void	map_maker(t_vars *vars)
 				DrawSquare(vars, i, j, 0x8E8E8E);
 			else if (vars->map[a][b] == '0')
 				DrawSquare(vars, i, j, 0x000000);
+			else if (vars->map[a][b] == 'E')
+			{
+				vars->map[a][b] = '0';
+				//vars->x1 = j;
+				//vars->y1 = i;
+				DrawSquare(vars, i, j, 0x000000);
+			}
 			b++;
-			i += 50;
+			i += 32;
 		}
 		a++;
-		j += 50;
+		j += 32;
 	}
 }
 

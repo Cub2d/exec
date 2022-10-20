@@ -16,10 +16,10 @@ void	DrawSquare(t_vars *vars, int x, int y, int color)
 	int	n = x;
 	int	m = y;
 
-	while (n < x + 50)
+	while (n < x + 32)
 	{
 		m = y;
-		while (m < y + 50)
+		while (m < y + 32)
 		{
 			my_mlx_pixel_put(&vars->img, n, m, color);
 			m++;
