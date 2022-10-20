@@ -52,7 +52,7 @@ typedef struct s_point {
 	float y;
 }	t_point;
 
-void	DrawCircle(int r, t_vars *vars);
+void	DrawCircle(t_vars *vars);
 void	dda(t_vars *vars, t_point a, t_point b);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		keys_hook(int key, t_vars *vars);

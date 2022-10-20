@@ -44,10 +44,10 @@ int	keys_hook(int key, t_vars *vars)
 	if (key == 1 || key == 125)
 		move_down(vars);
 	if (key == 124)
-		vars->angle += 6;
+		vars->angle += 3;
 	if (key == 123)
-		vars->angle -= 6;
-	DrawCircle(100, vars);
+		vars->angle -= 3;
+	DrawCircle(vars);
 	return (0);
 }
 
@@ -71,20 +71,27 @@ t_point	new_point(float x, float y)
 	return (a);
 }
 
-void	calculation(t_vars *vars, int left, int right, int r)
+void	calculation(t_vars *vars, int left, int right)
 {
 	static const double PI = 3.1415926535;
+	float	x;
+	float	y;
+	float	start;
+	float	end;
 
-	vars->x2 = vars->x1 +  (r * cos(right * PI / 180));
-	vars->y2 = vars->y1 +  (r * sin(right * PI / 180));
-	dda(vars, new_point(vars->x1, vars->y1), new_point(vars->x2, vars->y2));
-	vars->x3 = vars->x1 +  (r * cos(left * PI / 180));
-	vars->y3 = vars->y1 +  (r * sin(left * PI / 180));
-	dda(vars, new_point(vars->x1, vars->y1), new_point(vars->x3, vars->y3));
+	start = left;
+	end = right;
+	while (start <= left + 60)
+	{
+		x = vars->x1 +  (100 * cos(start * PI / 180));
+		y = vars->y1 +  (100 * sin(start * PI / 180));
+		dda(vars, new_point(vars->x1, vars->y1), new_point(x, y));
+		start += 0.01;
+	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 }
 
-void DrawCircle(int r, t_vars *vars)
+void DrawCircle(t_vars *vars)
 {
 	int right;
 	int left;
@@ -98,7 +105,8 @@ void DrawCircle(int r, t_vars *vars)
 	else
 		left = vars->angle - 30;
 	map_maker(vars);
-	calculation(vars, left, right, r);
+	calculation(vars, left, right);
+	
 }
 
 int	main(int ac, char **av)
@@ -118,7 +126,7 @@ int	main(int ac, char **av)
 	vars.x1 = 480;
 	vars.y1 = 160;
 	Show_Map(&vars);
-	DrawCircle(100, &vars);
+	DrawCircle(&vars);
 	// ft_line_counter(i, av[1], &vars);
 	// new_win(&vars, i[0], fd);
 	mlx_hook(vars.win, 17, 0, salam, &vars);
