@@ -2,11 +2,10 @@ CC = @cc
 
 FLAGS = -lmlx -framework OpenGL -framework AppKit
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra 
 
-FILES = cub3d.c dda_algho.c new_window.c\
-		line_counter.c get_next_line.c  \
-		Map.c
+FILES = cub3d.c dda_algho.c utils.c mouvements.c \
+		parse_map.c show_map.c get_next_line.c \
 
 NAME = cub3d
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
+/*   Updated: 2022/10/22 15:04:47 by cjad             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <math.h>
@@ -14,7 +26,7 @@ typedef struct s_gnl {
 	char	*temp;
 }				t_gnl;
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -22,46 +34,36 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-typedef struct s_map{
-	int i[2];
-	int height;
-	char *av;
-	int fd;
-}		t_map;
-
-typedef struct	s_vars {
+typedef struct s_vars {
 	void	*mlx;
 	void	*win;
+	int		height;
+	int		width;
+	char	*av;
 	float	x1;
 	float	y1;
-	float	x2;
-	float	y2;
-	float	x3;
-	float	y3;
-	float	pdx;
-	float	pdy;
 	int		angle;
 	char	**map;
 	int		lines;
 	t_data	img;
-	t_map	mapa;
 }				t_vars;
 
 typedef struct s_point {
-	float x;
-	float y;
+	float	x;
+	float	y;
 }	t_point;
 
-void	DrawCircle(t_vars *vars);
+int		keys_hook(int key, t_vars *vars);
+void	rays(t_vars *vars);
 void	dda(t_vars *vars, t_point a, t_point b);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		keys_hook(int key, t_vars *vars);
-void	new_win(t_vars *vars, int height, int fd);
+t_point	new_point(float x, float y);
 void	ft_line_counter(t_vars *vars);
-void	DrawSquare(t_vars *vars, int x, int y, int color);
+void	calculation(t_vars *vars, int left, int right);
+void	put_tiles(t_vars *vars, int x, int y, int color);
 void	map_maker(t_vars *vars);
 void	ft_putstr(char *str);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
-void	Show_Map(t_vars *vars);
+void	parse_map(t_vars *vars);
 #endif
