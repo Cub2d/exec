@@ -4,8 +4,13 @@ FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 CFLAGS = -Wall -Werror -Wextra 
 
-FILES = cub3d.c dda_algho.c utils.c mouvements.c \
-		parse_map.c show_map.c get_next_line.c \
+FILES = srcs/cub3d.c \
+		srcs/dda_algho.c\
+		srcs/utils.c\
+		srcs/mouvements.c \
+		srcs/parse_map.c\
+		srcs/show_map.c\
+		srcs/get_next_line.c \
 
 NAME = cub3d
 

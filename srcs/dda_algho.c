@@ -6,11 +6,11 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/22 15:03:10 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/24 12:39:01 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 void	linehorizontal(t_data	*img, int x1, int x2, int y)
 {

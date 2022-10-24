@@ -6,11 +6,11 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/22 14:52:46 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/24 12:39:01 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 void	put_tiles(t_vars *vars, int x, int y, int color)
 {

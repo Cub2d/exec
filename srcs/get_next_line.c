@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:41:49 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/07/28 15:49:07 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:39:01 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 size_t	ft_strlen(char *str)
 {
