@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/22 15:04:47 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/29 15:14:03 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ typedef struct s_vars {
 	void	*win;
 	int		height;
 	int		width;
+	int		face;
+	int		side;
 	char	*av;
 	float	x1;
 	float	y1;
 	int		angle;
+	int		s;
+	int		f;
 	char	**map;
 	int		lines;
 	t_data	img;
@@ -52,6 +56,13 @@ typedef struct s_point {
 	float	x;
 	float	y;
 }	t_point;
+typedef struct s_dda {
+	float	xinc;
+	float	yinc;
+	int		x;
+	int		y;
+	int		steps;
+}				t_dda;
 
 int		keys_hook(int key, t_vars *vars);
 void	rays(t_vars *vars);

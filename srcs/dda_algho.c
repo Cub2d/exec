@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/24 12:39:01 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/29 15:22:10 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,43 @@ void	circle_draw(t_data *img, int x_centre, int y_centre, int x)
 	}
 }
 
-void	dda(t_vars *vars, t_point a, t_point b)
+int	position_check(t_vars *vars, t_dda dda, t_point	a)
 {
-	float	xinc;
-	float	yinc;
-	int		steps;
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	x = a.x / 32;
 	y = a.y / 32;
+	if (vars->map[dda.y + vars->face][dda.x] == '1'
+		&& vars->map[dda.y][dda.x + vars->side] == '1')
+	{
+		if (x != dda.y && y != dda.y)
+			return (1);
+	}
+	return (0);
+}
+
+void	dda(t_vars *vars, t_point a, t_point b)
+{
+	t_dda	dda;
+
+	dda.x = a.x / 32;
+	dda.y = a.y / 32;
 	circle_draw(&vars->img, a.x, a.y, 5);
 	if (abs((int)(b.x - a.x)) > abs((int)(b.y - a.y)))
-		steps = abs((int)(b.x - a.x));
+		dda.steps = abs((int)(b.x - a.x));
 	else
-		steps = abs((int)(b.y - a.y));
-	xinc = (int)(b.x - a.x) / (float) steps;
-	yinc = (int)(b.y - a.y) / (float) steps;
-	while (vars->map[y][x] != '1')
+		dda.steps = abs((int)(b.y - a.y));
+	dda.xinc = (int)(b.x - a.x) / (float) dda.steps;
+	dda.yinc = (int)(b.y - a.y) / (float) dda.steps;
+	while (vars->map[dda.y][dda.x] != '1')
 	{
 		my_mlx_pixel_put(&vars->img, a.x, a.y, 0xFF0000);
-		a.x += xinc;
-		a.y += yinc;
-		x = a.x / 32;
-		y = a.y / 32;
+		a.x += dda.xinc;
+		a.y += dda.yinc;
+		if (position_check(vars, dda, a))
+			return ;
+		dda.x = a.x / 32;
+		dda.y = a.y / 32;
 	}
 }

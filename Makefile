@@ -2,7 +2,7 @@ CC = @cc
 
 FLAGS = -lmlx -framework OpenGL -framework AppKit
 
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra
 
 FILES = srcs/cub3d.c \
 		srcs/dda_algho.c\
