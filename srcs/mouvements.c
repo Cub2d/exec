@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/29 15:08:26 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/29 16:48:35 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	move_up(t_vars *vars)
 {
-	static double	pi;
 	int				x;
 	int				y;
 	int				cx;
 	int				cy;
 
-	pi = 3.1415926535;
-	x = (vars->x1 + (8 * cos(vars->angle * pi / 180))) / 32;
+	x = (vars->x1 + (8 * cos(vars->angle * M_PI / 180))) / 32;
 	cx = vars->x1 / 32;
-	y = (vars->y1 + (8 * sin(vars->angle * pi / 180))) / 32;
+	y = (vars->y1 + (8 * sin(vars->angle * M_PI / 180))) / 32;
 	cy = vars->y1 / 32;
 	if (vars->map[cy + vars->face][cx] == '1'
 		&& vars->map[cy][cx + vars->side] == '1')
@@ -33,23 +31,21 @@ void	move_up(t_vars *vars)
 	}
 	if (vars->map[y][x] != '1')
 	{
-		vars->x1 = vars->x1 + (8 * cos(vars->angle * pi / 180));
-		vars->y1 = vars->y1 + (8 * sin(vars->angle * pi / 180));
+		vars->x1 = vars->x1 + (8 * cos(vars->angle * M_PI / 180));
+		vars->y1 = vars->y1 + (8 * sin(vars->angle * M_PI / 180));
 	}
 }
 
 void	move_down(t_vars *vars)
 {
-	static double	pi;
 	int				x;
 	int				y;
 	int				cx;
 	int				cy;
 
-	pi = 3.1415926535;
-	x = (vars->x1 - (8 * cos(vars->angle * pi / 180))) / 32;
+	x = (vars->x1 - (8 * cos(vars->angle * M_PI / 180))) / 32;
 	cx = vars->x1 / 32;
-	y = (vars->y1 - (8 * sin(vars->angle * pi / 180))) / 32;
+	y = (vars->y1 - (8 * sin(vars->angle * M_PI / 180))) / 32;
 	cy = vars->y1 / 32;
 	if (vars->map[cy - vars->face][cx] == '1'
 		&& vars->map[cy][cx - vars->side] == '1')
@@ -59,8 +55,8 @@ void	move_down(t_vars *vars)
 	}
 	if (vars->map[y][x] != '1')
 	{
-		vars->x1 = vars->x1 - (8 * cos(vars->angle * pi / 180));
-		vars->y1 = vars->y1 - (8 * sin(vars->angle * pi / 180));
+		vars->x1 = vars->x1 - (8 * cos(vars->angle * M_PI / 180));
+		vars->y1 = vars->y1 - (8 * sin(vars->angle * M_PI / 180));
 	}
 }
 

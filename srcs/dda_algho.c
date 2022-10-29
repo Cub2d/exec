@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/29 15:22:10 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/29 17:06:28 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	linehorizontal(t_data	*img, int x1, int x2, int y)
 	}
 	while (min <= max)
 	{
-		my_mlx_pixel_put(img, min, y, 0xFF0000);
+		my_mlx_M_PIxel_put(img, min, y, 0xFF0000);
 		min++;
 	}
 }
@@ -66,11 +66,21 @@ int	position_check(t_vars *vars, t_dda dda, t_point	a)
 {
 	int	x;
 	int	y;
+	int	xin;
+	int	yin;
 
 	x = a.x / 32;
 	y = a.y / 32;
-	if (vars->map[dda.y + vars->face][dda.x] == '1'
-		&& vars->map[dda.y][dda.x + vars->side] == '1')
+	if (dda.xinc > 0)
+		xin = 1;
+	else
+		xin = -1;
+	if (dda.yinc > 0)
+		yin = 1;
+	else
+		yin = -1;
+	if (vars->map[dda.y + yin][dda.x] == '1'
+		&& vars->map[dda.y][dda.x + xin] == '1')
 	{
 		if (x != dda.y && y != dda.y)
 			return (1);
@@ -84,7 +94,6 @@ void	dda(t_vars *vars, t_point a, t_point b)
 
 	dda.x = a.x / 32;
 	dda.y = a.y / 32;
-	circle_draw(&vars->img, a.x, a.y, 5);
 	if (abs((int)(b.x - a.x)) > abs((int)(b.y - a.y)))
 		dda.steps = abs((int)(b.x - a.x));
 	else
@@ -93,7 +102,7 @@ void	dda(t_vars *vars, t_point a, t_point b)
 	dda.yinc = (int)(b.y - a.y) / (float) dda.steps;
 	while (vars->map[dda.y][dda.x] != '1')
 	{
-		my_mlx_pixel_put(&vars->img, a.x, a.y, 0xFF0000);
+		my_mlx_M_PIxel_put(&vars->img, a.x, a.y, 0xFF0000);
 		a.x += dda.xinc;
 		a.y += dda.yinc;
 		if (position_check(vars, dda, a))

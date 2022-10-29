@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/29 15:14:03 by cjad             ###   ########.fr       */
+/*   Updated: 2022/10/29 16:58:35 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_gnl {
 typedef struct s_data {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bits_per_M_PIxel;
 	int		line_length;
 	int		endian;
 }				t_data;
@@ -67,13 +67,14 @@ typedef struct s_dda {
 int		keys_hook(int key, t_vars *vars);
 void	rays(t_vars *vars);
 void	dda(t_vars *vars, t_point a, t_point b);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_M_PIxel_put(t_data *data, int x, int y, int color);
 t_point	new_point(float x, float y);
 void	ft_line_counter(t_vars *vars);
 void	calculation(t_vars *vars, int left, int right);
 void	put_tiles(t_vars *vars, int x, int y, int color);
 void	map_maker(t_vars *vars);
 void	ft_putstr(char *str);
+void	circle_draw(t_data *img, int x_centre, int y_centre, int x);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
 void	parse_map(t_vars *vars);
