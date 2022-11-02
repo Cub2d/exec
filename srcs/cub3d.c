@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/29 16:55:21 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/02 17:56:09 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,8 @@ void	rays(t_vars *vars)
 	int	right;
 	int	left;
 
-	if (vars->angle + 30 > 360)
-		right = 30 - (360 - vars->angle);
-	else
-		right = vars->angle + 30;
-	if (vars->angle - 30 < 0)
-		left = 360 - (30 - vars->angle);
-	else
-		left = vars->angle - 30;
+	right = vars->angle + 30;
+	left = vars->angle - 30;
 	map_maker(vars);
 	calculation(vars, left, right);
 }
@@ -51,8 +45,8 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1024, 352, "cub3d");
-	img.img = mlx_new_image(vars.mlx, 1024, 352);
+	vars.win = mlx_new_window(vars.mlx, 1024, 480, "cub3d");
+	img.img = mlx_new_image(vars.mlx, 1024, 480);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_M_PIxel,
 			&img.line_length, &img.endian);
 	vars.angle = 180;

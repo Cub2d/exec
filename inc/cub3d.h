@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/29 16:58:35 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/02 15:31:09 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_dda {
 	float	yinc;
 	int		x;
 	int		y;
+	int		ix;
+	int		iy;
 	int		steps;
 }				t_dda;
 
@@ -74,7 +76,6 @@ void	calculation(t_vars *vars, int left, int right);
 void	put_tiles(t_vars *vars, int x, int y, int color);
 void	map_maker(t_vars *vars);
 void	ft_putstr(char *str);
-void	circle_draw(t_data *img, int x_centre, int y_centre, int x);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
 void	parse_map(t_vars *vars);

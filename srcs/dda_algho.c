@@ -6,61 +6,11 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/29 17:06:28 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/02 18:03:48 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void	linehorizontal(t_data	*img, int x1, int x2, int y)
-{
-	int	min;
-	int	max;
-
-	if (x1 > x2)
-	{
-		min = x2;
-		max = x1;
-	}
-	else
-	{
-		min = x1;
-		max = x2;
-	}
-	while (min <= max)
-	{
-		my_mlx_M_PIxel_put(img, min, y, 0xFF0000);
-		min++;
-	}
-}
-
-void	circle_draw(t_data *img, int x_centre, int y_centre, int x)
-{
-	int	y;
-	int	p;
-
-	y = 0;
-	p = -9;
-	linehorizontal(img, -x + x_centre, x + x_centre, y + y_centre);
-	while (x > y)
-	{
-		y++;
-		if (p <= 0)
-			p = p + 2 * y + 1;
-		else
-		{
-			x--;
-			p = p + 2 * y - 2 * x + 1;
-		}
-		linehorizontal(img, -x + x_centre, x + x_centre, y + y_centre);
-		linehorizontal(img, -x + x_centre, x + x_centre, -y + y_centre);
-		if (x != y)
-		{
-			linehorizontal(img, -y + x_centre, y + x_centre, x + y_centre);
-			linehorizontal(img, -y + x_centre, y + x_centre, -x + y_centre);
-		}
-	}
-}
 
 int	position_check(t_vars *vars, t_dda dda, t_point	a)
 {
@@ -88,12 +38,52 @@ int	position_check(t_vars *vars, t_dda dda, t_point	a)
 	return (0);
 }
 
+void	display_ray(int wallheight, t_vars *vars)
+{
+	static int i;
+	int j;
+	
+	j = 0;
+	while (j < 480)
+	{
+		if (j < (240 - wallheight))
+			my_mlx_M_PIxel_put(&vars->img, i, j, 0x0000FF);
+		else if (j >= (240 - wallheight) && j <= (240 + wallheight))
+			my_mlx_M_PIxel_put(&vars->img, i, j, 0xFF0000);
+		else 
+			my_mlx_M_PIxel_put(&vars->img, i, j, 0x964B00);
+		j++;
+	}
+	i++;
+	if(i == 480)
+		i = 0;
+
+}
+
+void	calculate_wall_height(t_dda dda, t_point a, t_vars *vars)
+{
+	float	distance;
+	float	plandist;
+	int		wallheight;
+	
+	a.x -= dda.xinc;
+	a.y -= dda.yinc;
+	distance = sqrt((a.x - dda.ix) * (a.x - dda.ix) + (a.y - dda.iy) * (a.y - dda.iy));
+	plandist = 240 / tan(30 * M_PI / 180);
+	wallheight = (32 / distance) * plandist;
+	if (!distance || wallheight > 480)
+		wallheight = 480;
+	display_ray(wallheight / 2, vars);
+}
+
 void	dda(t_vars *vars, t_point a, t_point b)
 {
 	t_dda	dda;
 
 	dda.x = a.x / 32;
+	dda.ix = a.x;
 	dda.y = a.y / 32;
+	dda.iy = a.y;
 	if (abs((int)(b.x - a.x)) > abs((int)(b.y - a.y)))
 		dda.steps = abs((int)(b.x - a.x));
 	else
@@ -102,7 +92,7 @@ void	dda(t_vars *vars, t_point a, t_point b)
 	dda.yinc = (int)(b.y - a.y) / (float) dda.steps;
 	while (vars->map[dda.y][dda.x] != '1')
 	{
-		my_mlx_M_PIxel_put(&vars->img, a.x, a.y, 0xFF0000);
+		//my_mlx_M_PIxel_put(&vars->img, a.x, a.y, 0xFF0000);
 		a.x += dda.xinc;
 		a.y += dda.yinc;
 		if (position_check(vars, dda, a))
@@ -110,4 +100,5 @@ void	dda(t_vars *vars, t_point a, t_point b)
 		dda.x = a.x / 32;
 		dda.y = a.y / 32;
 	}
+	calculate_wall_height(dda, a, vars);
 }

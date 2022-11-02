@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/10/29 16:48:35 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/02 18:00:29 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	move_up(t_vars *vars)
 	{
 		vars->x1 = vars->x1 + (8 * cos(vars->angle * M_PI / 180));
 		vars->y1 = vars->y1 + (8 * sin(vars->angle * M_PI / 180));
+		rays(vars);
 	}
 }
 
@@ -57,6 +58,7 @@ void	move_down(t_vars *vars)
 	{
 		vars->x1 = vars->x1 - (8 * cos(vars->angle * M_PI / 180));
 		vars->y1 = vars->y1 - (8 * sin(vars->angle * M_PI / 180));
+		rays(vars);
 	}
 }
 
@@ -73,6 +75,7 @@ void	rotate_right(t_vars *vars)
 		vars->side = -1;
 	else
 		vars->side = 1;
+	rays(vars);
 }
 
 void	rotate_left(t_vars *vars)
@@ -88,6 +91,7 @@ void	rotate_left(t_vars *vars)
 		vars->side = -1;
 	else
 		vars->side = 1;
+	rays(vars);
 }
 
 int	keys_hook(int key, t_vars *vars)
@@ -102,6 +106,5 @@ int	keys_hook(int key, t_vars *vars)
 		rotate_right(vars);
 	if (key == 123)
 		rotate_left(vars);
-	rays(vars);
 	return (0);
 }

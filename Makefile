@@ -1,8 +1,7 @@
 CC = @cc
 
-FLAGS = -lmlx -framework OpenGL -framework AppKit
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit
 
 FILES = srcs/cub3d.c \
 		srcs/dda_algho.c\
@@ -22,7 +21,7 @@ C_RES = \033[0m
 all : $(NAME)
 
 $(NAME) : $(FILES)
-		$(CC) $(CFLAGS) $(FLAGS) $(FILES) -o $(NAME)
+		$(CC) $(CFLAGS) $(FILES) -o $(NAME)
 		@echo "$(C_GREEN)["cub3d" CREATED]$(C_RES)"
 
 clean :
