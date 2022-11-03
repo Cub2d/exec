@@ -1,7 +1,7 @@
 CC = @cc
 
 
-CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g3
 
 FILES = srcs/cub3d.c \
 		srcs/dda_algho.c\

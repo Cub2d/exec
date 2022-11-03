@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/02 18:15:02 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/03 13:00:38 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,8 @@
 // 	}
 // }
 
-void	my_mlx_M_PIxel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	(void)color;
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_M_PIxel / 8));
-	*(unsigned int *)dst = color;
-}
-
 void	calculation(t_vars *vars, int left, int right)
 {
-
 	float			x;
 	float			y;
 	float			start;
@@ -51,12 +41,16 @@ void	calculation(t_vars *vars, int left, int right)
 
 	start = left;
 	end = right;
-	while (start <= end)
+	vars->i = 0;
+	mlx_clear_window(vars->mlx, vars->win);
+	while (start < right)
 	{
 		x = vars->x1 + (4800 * cos(start * M_PI / 180));
 		y = vars->y1 + (4800 * sin(start * M_PI / 180));
+		vars->rayangle = fabs(vars->angle - start);
 		dda(vars, new_point(vars->x1, vars->y1), new_point(x, y));
 		start += 0.125;
+		vars->i++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 }

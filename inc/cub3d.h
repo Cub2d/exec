@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/02 15:31:09 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/03 12:29:11 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ typedef struct s_vars {
 	char	*av;
 	float	x1;
 	float	y1;
+	float	rayangle;
 	int		angle;
+	int		i;
 	int		s;
 	int		f;
 	char	**map;
