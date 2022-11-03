@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/03 15:29:56 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/03 18:04:30 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(int ac, char **av)
 	img.img = mlx_new_image(vars.mlx, WIN_WIDTH, WIN_WIDTH);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_M_PIxel,
 			&img.line_length, &img.endian);
-	vars.angle = 180;
 	vars.face = 1;
 	vars.side = -1;
 	vars.img = img;
