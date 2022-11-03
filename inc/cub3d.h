@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/03 12:29:11 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/03 17:23:04 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
+# define WIN_WIDTH 800
 
 typedef struct s_gnl {
 	char	c;
@@ -81,4 +82,5 @@ void	ft_putstr(char *str);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
 void	parse_map(t_vars *vars);
+
 #endif

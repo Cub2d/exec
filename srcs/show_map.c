@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/03 13:00:38 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/03 15:30:17 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	calculation(t_vars *vars, int left, int right)
 	end = right;
 	vars->i = 0;
 	mlx_clear_window(vars->mlx, vars->win);
-	while (start < right)
+	while (start < right && vars->i < WIN_WIDTH)
 	{
-		x = vars->x1 + (4800 * cos(start * M_PI / 180));
-		y = vars->y1 + (4800 * sin(start * M_PI / 180));
+		x = vars->x1 + (4800* cos(start * M_PI / 180));
+		y = vars->y1 + (4800* sin(start * M_PI / 180));
 		vars->rayangle = fabs(vars->angle - start);
 		dda(vars, new_point(vars->x1, vars->y1), new_point(x, y));
-		start += 0.125;
+		start += 0.075f;
 		vars->i++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
