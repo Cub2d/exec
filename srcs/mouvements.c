@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/02 18:00:29 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/05 15:31:17 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	move_up(t_vars *vars)
 	int				cx;
 	int				cy;
 
-	x = (vars->x1 + (8 * cos(vars->angle * M_PI / 180))) / 32;
-	cx = vars->x1 / 32;
-	y = (vars->y1 + (8 * sin(vars->angle * M_PI / 180))) / 32;
-	cy = vars->y1 / 32;
+	x = (vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / 32;
+	cx = vars->x / 32;
+	y = (vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / 32;
+	cy = vars->y / 32;
 	if (vars->map[cy + vars->face][cx] == '1'
 		&& vars->map[cy][cx + vars->side] == '1')
 	{
@@ -31,8 +31,8 @@ void	move_up(t_vars *vars)
 	}
 	if (vars->map[y][x] != '1')
 	{
-		vars->x1 = vars->x1 + (8 * cos(vars->angle * M_PI / 180));
-		vars->y1 = vars->y1 + (8 * sin(vars->angle * M_PI / 180));
+		vars->x = vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180));
+		vars->y = vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180));
 		rays(vars);
 	}
 }
@@ -44,10 +44,10 @@ void	move_down(t_vars *vars)
 	int				cx;
 	int				cy;
 
-	x = (vars->x1 - (8 * cos(vars->angle * M_PI / 180))) / 32;
-	cx = vars->x1 / 32;
-	y = (vars->y1 - (8 * sin(vars->angle * M_PI / 180))) / 32;
-	cy = vars->y1 / 32;
+	x = (vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / 32;
+	cx = vars->x / 32;
+	y = (vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / 32;
+	cy = vars->y / 32;
 	if (vars->map[cy - vars->face][cx] == '1'
 		&& vars->map[cy][cx - vars->side] == '1')
 	{
@@ -56,15 +56,15 @@ void	move_down(t_vars *vars)
 	}
 	if (vars->map[y][x] != '1')
 	{
-		vars->x1 = vars->x1 - (8 * cos(vars->angle * M_PI / 180));
-		vars->y1 = vars->y1 - (8 * sin(vars->angle * M_PI / 180));
+		vars->x = vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180));
+		vars->y = vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180));
 		rays(vars);
 	}
 }
 
 void	rotate_right(t_vars *vars)
 {
-	vars->angle += 3;
+	vars->angle += ROTATE_SPEED;
 	if (vars->angle > 360)
 		vars->angle -= 360;
 	if (vars->angle >= 0 && vars->angle <= 180)
@@ -80,7 +80,7 @@ void	rotate_right(t_vars *vars)
 
 void	rotate_left(t_vars *vars)
 {
-	vars->angle -= 3;
+	vars->angle -= ROTATE_SPEED;
 	if (vars->angle < 0)
 		vars->angle += 360;
 	if (vars->angle >= 0 && vars->angle <= 180)

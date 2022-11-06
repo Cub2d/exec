@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/03 18:04:30 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 15:20:28 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	rays(t_vars *vars)
 
 	right = vars->angle + 30;
 	left = vars->angle - 30;
-	map_maker(vars);
 	calculation(vars, left, right);
 }
 
@@ -47,13 +46,20 @@ int	main(int ac, char **av)
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_WIDTH, "cub3d");
 	img.img = mlx_new_image(vars.mlx, WIN_WIDTH, WIN_WIDTH);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_M_PIxel,
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	vars.face = 1;
 	vars.side = -1;
 	vars.img = img;
 	vars.av = av[1];
 	parse_map(&vars);
+	if (vars.height * 16 > WIN_WIDTH || vars.width * 16 > WIN_WIDTH)
+	{
+		write(1, "Cannot show mini map due to large map scaling\n", 47);
+		vars.mini = 0;
+	}
+	else
+		vars.mini = 1;
 	rays(&vars);
 	mlx_hook(vars.win, 17, 0, salam, &vars);
 	mlx_hook(vars.win, 2, 0, keys_hook, &vars);

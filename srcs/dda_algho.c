@@ -6,95 +6,89 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/03 17:58:33 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 15:28:45 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int	position_check(t_vars *vars, t_dda dda, t_point	*a)
+void	calculate_wall_height(t_point a, t_vars *vars)
 {
-	int	x;
-	int	y;
-	int	xin;
-	int	yin;
+	double	distance;
+	double	plandist;
+	double	wallheight;
 
-	x = a->x / 32;
-	y = a->y / 32;
-	if (dda.xinc > 0)
-		xin = 1;
-	else
-		xin = -1;
-	if (dda.yinc > 0)
-		yin = 1;
-	else
-		yin = -1;
-	if (vars->map[dda.y + yin][dda.x] == '1'
-		&& vars->map[dda.y][dda.x + xin] == '1')
-	{
-		if (x != dda.y && y != dda.y)
-			return (1);
-	}
-	return (0);
-}
-
-void	display_ray(float wallheight, t_vars *vars)
-{
-	int	j;
-
-	j = 0;
-	while (j < WIN_WIDTH)
-	{
-		if (j < (400 - wallheight))
-			my_mlx_M_PIxel_put(&vars->img, vars->i, j, 0x0000FF);
-		else if (j >= (400 - wallheight) && j <= (400 + wallheight))
-			my_mlx_M_PIxel_put(&vars->img, vars->i, j, 0xFF0000);
-		else
-			my_mlx_M_PIxel_put(&vars->img, vars->i, j, 0x964B00);
-		j++;
-	}
-}
-
-void	calculate_wall_height(t_dda dda, t_point a, t_vars *vars)
-{
-	float	distance;
-	float	plandist;
-	float	wallheight;
-
-	a.x -= dda.xinc;
-	a.y -= dda.yinc;
-	distance = sqrt((a.x - dda.ix) * (a.x - dda.ix)
-			+ (a.y - dda.iy) * (a.y - dda.iy));
+	distance = sqrt((a.x - vars->x) * (a.x - vars->x)
+			+ (a.y - vars->y) * (a.y - vars->y));
 	distance = distance * cos(vars->rayangle * M_PI / 180);
-	plandist = 400 / tan(30 * M_PI / 180);
+	plandist = WIN_WIDTH_2 / tan(30 * M_PI / 180);
 	wallheight = (32 / distance) * plandist;
 	if (!distance || wallheight > WIN_WIDTH || wallheight < 0)
 		wallheight = WIN_WIDTH;
 	display_ray(wallheight / 2, vars);
 }
 
-void	dda(t_vars *vars, t_point a, t_point b)
+t_point	horizontal_point(t_vars *vars, float castangle)
 {
-	t_dda	dda;
+	double	xstep;
+	double	ystep;
+	double	hx;
+	double	hy;
+	int		y;
 
-	dda.x = a.x / 32;
-	dda.ix = a.x;
-	dda.y = a.y / 32;
-	dda.iy = a.y;
-	if (abs((int)(b.x - a.x)) > abs((int)(b.y - a.y)))
-		dda.steps = abs((int)(b.x - a.x));
-	else
-		dda.steps = abs((int)(b.y - a.y));
-	dda.yinc = (int)(b.y - a.y) / (float) dda.steps;
-	dda.xinc = (int)(b.x - a.x) / (float) dda.steps;
-	while (vars->map[dda.y][dda.x] != '1')
+	hy = floor(vars->y / 32) * 32;
+	y = 0;
+	if (yin(vars, castangle) > 0)
+		hy += 32;
+	hx = vars->x + (hy - vars->y) / tan(castangle * M_PI / 180);
+	ystep = 32 * yin(vars, castangle);
+	xstep = 32 / tan(castangle * M_PI / 180);
+	if ((xstep > 0 && xin(vars, castangle) < 0)
+		|| (xstep < 0 && xin(vars, castangle) > 0))
+		xstep *= -1;
+	if (yin(vars, castangle) < 0)
+		y = 1;
+	while (is_not_wall(vars, hx, hy - y))
 	{
-		a.x += dda.xinc;
-		a.y += dda.yinc;
-		if (position_check(vars, dda, &a))
-			break ;
-		dda.x = a.x / 32;
-		dda.y = a.y / 32;
+		hx += xstep;
+		hy += ystep;
 	}
-	calculate_wall_height(dda, a, vars);
+	return (new_point(hx, hy));
+}
+
+t_point	vertical_point(t_vars *vars, double castangle)
+{
+	double	xstep;
+	double	ystep;
+	double	hx;
+	double	hy;
+	int		x;
+
+	hx = floor(vars->x / 32) * 32;
+	x = 0;
+	if (xin(vars, castangle) > 0)
+		hx += 32;
+	hy = vars->y + (hx - vars->x) * tan(castangle * M_PI / 180);
+	xstep = 32 * xin(vars, castangle);
+	ystep = 32 * tan(castangle * M_PI / 180);
+	if ((ystep > 0 && yin(vars, castangle) < 0)
+		|| (ystep < 0 && yin(vars, castangle) > 0))
+		ystep *= -1;
+	if (xin(vars, castangle) < 0)
+		x = 1;
+	while (is_not_wall(vars, hx - x, hy))
+	{
+		hx += xstep;
+		hy += ystep;
+	}
+	return (new_point(hx, hy));
+}
+
+double	distance_to_point(t_vars *vars, t_point a)
+{
+	double	distance;
+
+	distance = sqrt((vars->x - a.x) * (vars->x - a.x)
+			+ (vars->y - a.y) * (vars->y - a.y));
+	return (distance);
 }

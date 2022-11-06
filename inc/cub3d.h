@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/03 17:23:04 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 15:29:44 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define WIN_WIDTH 800
+# define WIN_WIDTH 960
+# define WIN_WIDTH_2 480
+# define ROTATE_SPEED 5
+# define MOUVEMENT_SPEED 10
 
 typedef struct s_gnl {
 	char	c;
@@ -30,7 +33,7 @@ typedef struct s_gnl {
 typedef struct s_data {
 	void	*img;
 	char	*addr;
-	int		bits_per_M_PIxel;
+	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }				t_data;
@@ -42,26 +45,32 @@ typedef struct s_vars {
 	int		width;
 	int		face;
 	int		side;
-	char	*av;
-	float	x1;
-	float	y1;
-	float	rayangle;
+	int		vert;
+	int		hor;
+	int		rayface;
+	int		rayside;
 	int		angle;
 	int		i;
 	int		s;
 	int		f;
-	char	**map;
+	int		mini;
 	int		lines;
+	char	*av;
+	char	**map;
+	double	x;
+	double	y;
+	double	rayangle;
+	double	castangle;
 	t_data	img;
 }				t_vars;
 
 typedef struct s_point {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_point;
 typedef struct s_dda {
-	float	xinc;
-	float	yinc;
+	double	xinc;
+	double	yinc;
 	int		x;
 	int		y;
 	int		ix;
@@ -70,17 +79,27 @@ typedef struct s_dda {
 }				t_dda;
 
 int		keys_hook(int key, t_vars *vars);
-void	rays(t_vars *vars);
-void	dda(t_vars *vars, t_point a, t_point b);
-void	my_mlx_M_PIxel_put(t_data *data, int x, int y, int color);
-t_point	new_point(float x, float y);
+int		xin(t_vars *vars, double castangle);
+int		yin(t_vars *vars, double castangle);
+int		is_not_wall(t_vars *vars, double hx, double hy);
+char	*get_next_line(int fd);
 void	ft_line_counter(t_vars *vars);
+void	display_ray(float wallheight, t_vars *vars);
+void	print_minimap(t_vars *vars);
+void	circle_draw(t_vars *vars, int x_centre, int y_centre, int x);
 void	calculation(t_vars *vars, int left, int right);
 void	put_tiles(t_vars *vars, int x, int y, int color);
 void	map_maker(t_vars *vars);
 void	ft_putstr(char *str);
-char	*get_next_line(int fd);
-size_t	ft_strlen(char *str);
+void	rays(t_vars *vars);
+void	dda(t_vars *vars, t_point a, t_point b);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	parse_map(t_vars *vars);
+void	calculate_wall_height(t_point a, t_vars *vars);
+double	distance_to_point(t_vars *vars, t_point a);
+t_point	new_point(float x, float y);
+t_point	vertical_point(t_vars *vars, double castangle);
+t_point	horizontal_point(t_vars *vars, float castangle);
+size_t	ft_strlen(char *str);
 
 #endif

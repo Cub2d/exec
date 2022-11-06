@@ -7,9 +7,12 @@ FILES = srcs/cub3d.c \
 		srcs/dda_algho.c\
 		srcs/utils.c\
 		srcs/mouvements.c \
-		srcs/parse_map.c\
-		srcs/show_map.c\
+		srcs/parse_map.c \
+		srcs/show_map.c \
+		srcs/drawing_circle.c \
 		srcs/get_next_line.c \
+		srcs/mini_map.c \
+		srcs/display_ray.c \
 
 NAME = cub3d
 
