@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 15:20:28 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 18:30:42 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	salam(void)
 	return (0);
 }
 
-t_point	new_point(float x, float y)
+t_point	new_p(double x, double y)
 {
 	t_point	a;
 
@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 	vars.img = img;
 	vars.av = av[1];
 	parse_map(&vars);
-	if (vars.height * 16 > WIN_WIDTH || vars.width * 16 > WIN_WIDTH)
+	if (vars.height * M_SCALE > WIN_WIDTH || vars.width * M_SCALE > WIN_WIDTH)
 	{
 		write(1, "Cannot show mini map due to large map scaling\n", 47);
 		vars.mini = 0;

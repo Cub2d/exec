@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 15:30:13 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 17:36:22 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	calculation(t_vars *vars, int left, int right)
 		vars->rayangle = fabs(vars->angle - castangle);
 		calculate_wall_height(closest_wall(vars, castangle), vars);
 		vars->castangle = castangle;
-		castangle += 0.0625;
+		castangle += 0.05;
 		vars->i++;
 	}
 	if (vars->mini)
@@ -71,8 +71,8 @@ void	check_player_position(t_vars *vars, int a, int b)
 		if (c == 'S')
 			vars->angle = 90;
 		vars->map[a][b] = '0';
-		vars->x = b * 32 + 16;
-		vars->y = a * 32 + 16;
+		vars->x = b * TILE + TILE_2;
+		vars->y = a * TILE + TILE_2;
 	}
 }
 

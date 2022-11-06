@@ -13,6 +13,7 @@ FILES = srcs/cub3d.c \
 		srcs/get_next_line.c \
 		srcs/mini_map.c \
 		srcs/display_ray.c \
+		srcs/mini_utils.c \
 
 NAME = cub3d
 

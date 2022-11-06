@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:49:06 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 13:31:05 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 17:27:26 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int	is_not_wall(t_vars *vars, double hx, double hy)
 	int	x;
 	int	y;
 
-	x = hx / 32;
-	y = hy / 32;
+	x = hx / TILE;
+	y = hy / TILE;
 	if (y >= 0 && y < vars->height)
 	{
 		if (x >= 0 && x < (int)ft_strlen(vars->map[y]))

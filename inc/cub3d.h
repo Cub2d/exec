@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 15:29:44 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 18:30:42 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define WIN_WIDTH 960
-# define WIN_WIDTH_2 480
+# define WIN_WIDTH 1200
+# define WIN_WIDTH_2 600
 # define ROTATE_SPEED 5
-# define MOUVEMENT_SPEED 10
+# define MOUVEMENT_SPEED 15
+# define TILE 64
+# define TILE_2 32
+# define M_SCALE 10
 
 typedef struct s_gnl {
 	char	c;
@@ -83,8 +86,9 @@ int		xin(t_vars *vars, double castangle);
 int		yin(t_vars *vars, double castangle);
 int		is_not_wall(t_vars *vars, double hx, double hy);
 char	*get_next_line(int fd);
-void	ft_line_counter(t_vars *vars);
 void	display_ray(float wallheight, t_vars *vars);
+void	ft_line_counter(t_vars *vars);
+void	player_direction(t_vars *vars, t_point a, t_point b);
 void	print_minimap(t_vars *vars);
 void	circle_draw(t_vars *vars, int x_centre, int y_centre, int x);
 void	calculation(t_vars *vars, int left, int right);
@@ -97,7 +101,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	parse_map(t_vars *vars);
 void	calculate_wall_height(t_point a, t_vars *vars);
 double	distance_to_point(t_vars *vars, t_point a);
-t_point	new_point(float x, float y);
+t_point	new_p(double x, double y);
 t_point	vertical_point(t_vars *vars, double castangle);
 t_point	horizontal_point(t_vars *vars, float castangle);
 size_t	ft_strlen(char *str);

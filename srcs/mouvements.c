@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/05 15:31:17 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 17:27:26 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	move_up(t_vars *vars)
 	int				cx;
 	int				cy;
 
-	x = (vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / 32;
-	cx = vars->x / 32;
-	y = (vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / 32;
-	cy = vars->y / 32;
+	x = (vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / TILE;
+	cx = vars->x / TILE;
+	y = (vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / TILE;
+	cy = vars->y / TILE;
 	if (vars->map[cy + vars->face][cx] == '1'
 		&& vars->map[cy][cx + vars->side] == '1')
 	{
@@ -44,10 +44,10 @@ void	move_down(t_vars *vars)
 	int				cx;
 	int				cy;
 
-	x = (vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / 32;
-	cx = vars->x / 32;
-	y = (vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / 32;
-	cy = vars->y / 32;
+	x = (vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / TILE;
+	cx = vars->x / TILE;
+	y = (vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / TILE;
+	cy = vars->y / TILE;
 	if (vars->map[cy - vars->face][cx] == '1'
 		&& vars->map[cy][cx - vars->side] == '1')
 	{

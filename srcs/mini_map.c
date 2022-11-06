@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:41:20 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 15:26:09 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 18:30:42 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	put_tiles(t_vars *vars, int x, int y, int color)
 
 	n = x;
 	m = y;
-	while (n < x + 8)
+	while (n < x + M_SCALE)
 	{
 		m = y;
-		while (m < y + 8)
+		while (m < y + M_SCALE)
 		{
 			my_mlx_pixel_put(&vars->img, n, m, color);
 			m++;
@@ -33,8 +33,10 @@ void	put_tiles(t_vars *vars, int x, int y, int color)
 
 void	print_minimap(t_vars *vars)
 {
-	int	a;
-	int	b;
+	int		a;
+	int		b;
+	double	x;
+	double	y;
 
 	a = 0;
 	while (vars->map[a])
@@ -43,13 +45,16 @@ void	print_minimap(t_vars *vars)
 		while (vars->map[a][b])
 		{
 			if (vars->map[a][b] == '1')
-				put_tiles(vars, b * 8, a * 8, 0x8E8E8E);
+				put_tiles(vars, b * M_SCALE, a * M_SCALE, 0x8E8E8E);
 			if (vars->map[a][b] == '0')
-				put_tiles(vars, b * 8, a * 8, 0x000000);
+				put_tiles(vars, b * M_SCALE, a * M_SCALE, 0x000000);
 			b++;
 		}
 		a++;
 	}
-	circle_draw(vars, vars->x / 4, vars->y / 4, 1);
+	circle_draw(vars, vars->x / 6.4, vars->y / 6.4, 2);
+	x = vars->x / 6.4 + (12 * cos(vars->angle * M_PI / 180));
+	y = vars->y / 6.4 + (12 * sin(vars->angle * M_PI / 180));
+	player_direction(vars, new_p(vars->x / 6.4, vars->y / 6.4), new_p(x, y));
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 }

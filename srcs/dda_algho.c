@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 15:28:45 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 18:30:42 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	calculate_wall_height(t_point a, t_vars *vars)
 			+ (a.y - vars->y) * (a.y - vars->y));
 	distance = distance * cos(vars->rayangle * M_PI / 180);
 	plandist = WIN_WIDTH_2 / tan(30 * M_PI / 180);
-	wallheight = (32 / distance) * plandist;
+	wallheight = (TILE / distance) * plandist;
 	if (!distance || wallheight > WIN_WIDTH || wallheight < 0)
 		wallheight = WIN_WIDTH;
 	display_ray(wallheight / 2, vars);
@@ -36,13 +36,13 @@ t_point	horizontal_point(t_vars *vars, float castangle)
 	double	hy;
 	int		y;
 
-	hy = floor(vars->y / 32) * 32;
+	hy = floor(vars->y / TILE) * TILE;
 	y = 0;
 	if (yin(vars, castangle) > 0)
-		hy += 32;
+		hy += TILE;
 	hx = vars->x + (hy - vars->y) / tan(castangle * M_PI / 180);
-	ystep = 32 * yin(vars, castangle);
-	xstep = 32 / tan(castangle * M_PI / 180);
+	ystep = TILE * yin(vars, castangle);
+	xstep = TILE / tan(castangle * M_PI / 180);
 	if ((xstep > 0 && xin(vars, castangle) < 0)
 		|| (xstep < 0 && xin(vars, castangle) > 0))
 		xstep *= -1;
@@ -53,7 +53,7 @@ t_point	horizontal_point(t_vars *vars, float castangle)
 		hx += xstep;
 		hy += ystep;
 	}
-	return (new_point(hx, hy));
+	return (new_p(hx, hy));
 }
 
 t_point	vertical_point(t_vars *vars, double castangle)
@@ -64,13 +64,13 @@ t_point	vertical_point(t_vars *vars, double castangle)
 	double	hy;
 	int		x;
 
-	hx = floor(vars->x / 32) * 32;
+	hx = floor(vars->x / TILE) * TILE;
 	x = 0;
 	if (xin(vars, castangle) > 0)
-		hx += 32;
+		hx += TILE;
 	hy = vars->y + (hx - vars->x) * tan(castangle * M_PI / 180);
-	xstep = 32 * xin(vars, castangle);
-	ystep = 32 * tan(castangle * M_PI / 180);
+	xstep = TILE * xin(vars, castangle);
+	ystep = TILE * tan(castangle * M_PI / 180);
 	if ((ystep > 0 && yin(vars, castangle) < 0)
 		|| (ystep < 0 && yin(vars, castangle) > 0))
 		ystep *= -1;
@@ -81,7 +81,7 @@ t_point	vertical_point(t_vars *vars, double castangle)
 		hx += xstep;
 		hy += ystep;
 	}
-	return (new_point(hx, hy));
+	return (new_p(hx, hy));
 }
 
 double	distance_to_point(t_vars *vars, t_point a)
