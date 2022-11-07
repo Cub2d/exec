@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 17:27:26 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/06 18:57:53 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	move_down(t_vars *vars)
 	}
 }
 
-void	rotate_right(t_vars *vars)
+void	rotate_right(t_vars *vars, int speed)
 {
-	vars->angle += ROTATE_SPEED;
+	vars->angle += speed;
 	if (vars->angle > 360)
 		vars->angle -= 360;
 	if (vars->angle >= 0 && vars->angle <= 180)
@@ -78,9 +78,9 @@ void	rotate_right(t_vars *vars)
 	rays(vars);
 }
 
-void	rotate_left(t_vars *vars)
+void	rotate_left(t_vars *vars, int speed)
 {
-	vars->angle -= ROTATE_SPEED;
+	vars->angle -= speed;
 	if (vars->angle < 0)
 		vars->angle += 360;
 	if (vars->angle >= 0 && vars->angle <= 180)
@@ -103,8 +103,8 @@ int	keys_hook(int key, t_vars *vars)
 	if (key == 1 || key == 125)
 		move_down(vars);
 	if (key == 124)
-		rotate_right(vars);
+		rotate_right(vars, ROTATE_SPEED);
 	if (key == 123)
-		rotate_left(vars);
+		rotate_left(vars, ROTATE_SPEED);
 	return (0);
 }

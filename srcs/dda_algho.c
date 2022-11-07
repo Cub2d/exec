@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 18:30:42 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/07 13:25:45 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	calculate_wall_height(t_point a, t_vars *vars)
 	display_ray(wallheight / 2, vars);
 }
 
-t_point	horizontal_point(t_vars *vars, float castangle)
+t_point	horizontal_point(t_vars *vars, double castangle)
 {
 	double	xstep;
 	double	ystep;

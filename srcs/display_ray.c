@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:28:15 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 18:30:56 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/07 13:25:30 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	wall_color(t_vars *vars, int j)
 	}
 }
 
-void	display_ray(float wallheight, t_vars *vars)
+void	display_ray(double wallheight, t_vars *vars)
 {
 	double	j;
 

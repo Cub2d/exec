@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:41:20 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 18:30:42 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/07 13:16:34 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	print_minimap(t_vars *vars)
 		}
 		a++;
 	}
-	circle_draw(vars, vars->x / 6.4, vars->y / 6.4, 2);
-	x = vars->x / 6.4 + (12 * cos(vars->angle * M_PI / 180));
-	y = vars->y / 6.4 + (12 * sin(vars->angle * M_PI / 180));
-	player_direction(vars, new_p(vars->x / 6.4, vars->y / 6.4), new_p(x, y));
+	circle_draw(vars, vars->x / 6.4, vars->y / 6.4, 3);
+	x = vars->x / 6.4 + (8 * cos(vars->angle * M_PI / 180));
+	y = vars->y / 6.4 + (8 * sin(vars->angle * M_PI / 180));
+	water_drop(vars, new_p(x, y));
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 }

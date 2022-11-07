@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 18:30:42 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/07 13:44:17 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void	rays(t_vars *vars)
 	calculation(vars, left, right);
 }
 
+int	mouse_rotate(int x, int y, t_vars *vars)
+{
+	(void) y;
+	if (x > vars->mouse)
+		rotate_right(vars, x - vars->mouse);
+	else if (x < vars->mouse)
+		rotate_left(vars, vars->mouse - x);
+	vars->mouse = x;
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_vars	vars;
@@ -48,8 +59,6 @@ int	main(int ac, char **av)
 	img.img = mlx_new_image(vars.mlx, WIN_WIDTH, WIN_WIDTH);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	vars.face = 1;
-	vars.side = -1;
 	vars.img = img;
 	vars.av = av[1];
 	parse_map(&vars);
@@ -61,7 +70,9 @@ int	main(int ac, char **av)
 	else
 		vars.mini = 1;
 	rays(&vars);
+	vars.mouse = WIN_WIDTH_2;
 	mlx_hook(vars.win, 17, 0, salam, &vars);
+	mlx_hook(vars.win, 6, 0, mouse_rotate, &vars);
 	mlx_hook(vars.win, 2, 0, keys_hook, &vars);
 	mlx_loop(vars.mlx);
 }
