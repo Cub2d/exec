@@ -6,13 +6,13 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/07 13:44:17 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/07 16:33:06 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int	salam(void)
+int	esc(void)
 {
 	exit(1);
 	return (0);
@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 		vars.mini = 1;
 	rays(&vars);
 	vars.mouse = WIN_WIDTH_2;
-	mlx_hook(vars.win, 17, 0, salam, &vars);
+	mlx_hook(vars.win, 17, 0, esc, &vars);
 	mlx_hook(vars.win, 6, 0, mouse_rotate, &vars);
 	mlx_hook(vars.win, 2, 0, keys_hook, &vars);
 	mlx_loop(vars.mlx);
