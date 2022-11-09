@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:28:15 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 16:48:14 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/09 17:06:55 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	put_texture(t_vars *vars, t_data *tex, int j, int x)
 	int imgx;
 
 	imgy = j + (vars->wallheight / 2) - WIN_WIDTH_2;
+	imgy *= (tex->height / vars->wallheight);
 	imgx = x % tex->width;
 	color = (int *)(tex->addr + (imgy * tex->line_length + imgx * (tex->bpp / 8)));
 	my_mlx_pixel_put(vars->img, vars->i, j, *color);
