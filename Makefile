@@ -1,9 +1,9 @@
 CC = @cc
 
 
-CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit #-fsanitize=address -g3
 
-FILES = srcs/cub3d.c \
+FILES = cub3d.c \
 		srcs/dda_algho.c\
 		srcs/utils.c\
 		srcs/mouvements.c \

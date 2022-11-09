@@ -6,44 +6,56 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:28:15 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/08 12:48:34 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/09 16:48:14 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	wall_color(t_vars *vars, int j)
+void	put_texture(t_vars *vars, t_data *tex, int j, int x)
+{
+	int *color;
+	int imgy;
+	int imgx;
+
+	imgy = j + (vars->wallheight / 2) - WIN_WIDTH_2;
+	imgx = x % tex->width;
+	color = (int *)(tex->addr + (imgy * tex->line_length + imgx * (tex->bpp / 8)));
+	my_mlx_pixel_put(vars->img, vars->i, j, *color);
+}
+
+void	wall_color(t_vars *vars, int j, t_point a)
 {
 	if (vars->hor)
 	{
 		if (vars->rayface > 0)
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0x919191);
+			put_texture(vars, vars->so, j, a.x);
 		else
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0xBEBEBE);
+			put_texture(vars, vars->no, j, a.x);
 	}
 	if (vars->vert)
 	{
 		if (vars->rayside > 0)
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0x007cdb);
+			put_texture(vars, vars->ea, j, a.y);
 		else
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0x0061ad);
+			put_texture(vars, vars->we, j, a.y);
 	}
 }
 
-void	display_ray(double wallheight, t_vars *vars)
+void	display_ray(double wallheight, t_vars *vars, t_point a)
 {
-	double	j;
+	int	j;
 
 	j = 0;
 	while (j < WIN_WIDTH)
 	{
 		if (j < (WIN_WIDTH_2 - wallheight))
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0x00008b);
+			my_mlx_pixel_put(vars->img, vars->i, j, 0x00008b);
 		else if (j >= (WIN_WIDTH_2 - wallheight)
 			&& j <= (WIN_WIDTH_2 + wallheight))
-			wall_color(vars, j);
+			wall_color(vars, j, a);
 		else
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0x414141);
+			my_mlx_pixel_put(vars->img, vars->i, j, 0x414141);
 		j++;
 	}
 }

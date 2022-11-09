@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 18:57:53 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/09 11:58:49 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	move_up(t_vars *vars)
 {
-	int				x;
-	int				y;
-	int				cx;
-	int				cy;
+	int	x;
+	int	y;
+	int	cx;
+	int	cy;
 
 	x = (vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / TILE;
 	cx = vars->x / TILE;
@@ -39,10 +39,10 @@ void	move_up(t_vars *vars)
 
 void	move_down(t_vars *vars)
 {
-	int				x;
-	int				y;
-	int				cx;
-	int				cy;
+	int	x;
+	int	y;
+	int	cx;
+	int	cy;
 
 	x = (vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / TILE;
 	cx = vars->x / TILE;

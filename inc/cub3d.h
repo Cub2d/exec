@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/07 13:25:45 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/09 15:08:02 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIN_WIDTH 1200
 # define WIN_WIDTH_2 600
 # define ROTATE_SPEED 3
-# define MOUVEMENT_SPEED 12
+# define MOUVEMENT_SPEED 8
 # define TILE 64
 # define TILE_2 32
 # define M_SCALE 10
@@ -36,7 +36,9 @@ typedef struct s_gnl {
 typedef struct s_data {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp;
+	int		height;
+	int 	width;
 	int		line_length;
 	int		endian;
 }				t_data;
@@ -65,7 +67,12 @@ typedef struct s_vars {
 	double	y;
 	double	rayangle;
 	double	castangle;
-	t_data	img;
+	double	wallheight;
+	t_data	*img;
+	t_data	*we;
+	t_data	*ea;
+	t_data	*so;
+	t_data	*no;
 }				t_vars;
 
 typedef struct s_point {
@@ -87,7 +94,7 @@ int		xin(t_vars *vars, double castangle);
 int		yin(t_vars *vars, double castangle);
 int		is_not_wall(t_vars *vars, double hx, double hy);
 char	*get_next_line(int fd);
-void	display_ray(double wallheight, t_vars *vars);
+void	display_ray(double wallheight, t_vars *vars, t_point a);
 void	water_drop(t_vars *vars, t_point a);
 void	rotate_left(t_vars *vars, int speed);
 void	rotate_right(t_vars *vars, int speed);

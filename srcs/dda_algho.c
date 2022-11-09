@@ -6,27 +6,30 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/07 13:25:45 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/09 11:06:30 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+// the algorithm to calculate the wall height on my screen relying on the distance to it
+
 void	calculate_wall_height(t_point a, t_vars *vars)
 {
 	double	distance;
 	double	plandist;
-	double	wallheight;
 
 	distance = sqrt((a.x - vars->x) * (a.x - vars->x)
 			+ (a.y - vars->y) * (a.y - vars->y));
 	distance = distance * cos(vars->rayangle * M_PI / 180);
 	plandist = WIN_WIDTH_2 / tan(30 * M_PI / 180);
-	wallheight = (TILE / distance) * plandist;
-	if (!distance || wallheight > WIN_WIDTH || wallheight < 0)
-		wallheight = WIN_WIDTH;
-	display_ray(wallheight / 2, vars);
+	vars->wallheight = (TILE / distance) * plandist;
+	if (!distance || vars->wallheight > WIN_WIDTH || vars->wallheight < 0)
+		vars->wallheight = WIN_WIDTH;
+	display_ray(vars->wallheight / 2, vars, a);
 }
+
+//the algorithm to finding the first horizontal intersection of my ray with the wall
 
 t_point	horizontal_point(t_vars *vars, double castangle)
 {
@@ -55,6 +58,8 @@ t_point	horizontal_point(t_vars *vars, double castangle)
 	}
 	return (new_p(hx, hy));
 }
+
+//the algorithm to finding the first vertical intersection of my ray with the wall
 
 t_point	vertical_point(t_vars *vars, double castangle)
 {

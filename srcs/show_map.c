@@ -6,11 +6,14 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/06 17:36:22 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/09 16:37:30 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+//calculating the distance to the first vertical and horizontal intersection of my ray with
+//the wall and then picking the shortest distance of them
 
 t_point	closest_wall(t_vars *vars, double castangle)
 {
@@ -30,6 +33,8 @@ t_point	closest_wall(t_vars *vars, double castangle)
 		return (hd);
 	}
 }
+
+// this is the function to calculate how many rays i'll need and cast them
 
 void	calculation(t_vars *vars, int left, int right)
 {
@@ -52,7 +57,7 @@ void	calculation(t_vars *vars, int left, int right)
 	}
 	if (vars->mini)
 		print_minimap(vars);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 }
 
 void	check_player_position(t_vars *vars, int a, int b)
@@ -63,11 +68,11 @@ void	check_player_position(t_vars *vars, int a, int b)
 	if (c == 'E' || c == 'N' || c == 'W' || c == 'S')
 	{
 		if (c == 'E')
-			vars->angle = 180;
+			vars->angle = 0;
 		if (c == 'N')
 			vars->angle = 270;
 		if (c == 'W')
-			vars->angle = 0;
+			vars->angle = 180;
 		if (c == 'S')
 			vars->angle = 90;
 		vars->map[a][b] = '0';
