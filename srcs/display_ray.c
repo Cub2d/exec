@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:28:15 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 17:06:55 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/13 11:25:39 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 void	put_texture(t_vars *vars, t_data *tex, int j, int x)
 {
-	int *color;
-	int imgy;
-	int imgx;
+	int	*color;
+	int	imgy;
+	int	imgx;
 
 	imgy = j + (vars->wallheight / 2) - WIN_WIDTH_2;
 	imgy *= (tex->height / vars->wallheight);
 	imgx = x % tex->width;
-	color = (int *)(tex->addr + (imgy * tex->line_length + imgx * (tex->bpp / 8)));
-	my_mlx_pixel_put(vars->img, vars->i, j, *color);
+	color = (int *)(tex->addr
+			+ (imgy * tex->line_length + imgx * (tex->bpp / 8)));
+	my_mlx_pixel_put(&vars->img, vars->i, j, *color);
 }
 
 void	wall_color(t_vars *vars, int j, t_point a)
@@ -30,16 +31,16 @@ void	wall_color(t_vars *vars, int j, t_point a)
 	if (vars->hor)
 	{
 		if (vars->rayface > 0)
-			put_texture(vars, vars->so, j, a.x);
+			put_texture(vars, &vars->so, j, a.x);
 		else
-			put_texture(vars, vars->no, j, a.x);
+			put_texture(vars, &vars->no, j, a.x);
 	}
 	if (vars->vert)
 	{
 		if (vars->rayside > 0)
-			put_texture(vars, vars->ea, j, a.y);
+			put_texture(vars, &vars->ea, j, a.y);
 		else
-			put_texture(vars, vars->we, j, a.y);
+			put_texture(vars, &vars->we, j, a.y);
 	}
 }
 
@@ -51,12 +52,12 @@ void	display_ray(double wallheight, t_vars *vars, t_point a)
 	while (j < WIN_WIDTH)
 	{
 		if (j < (WIN_WIDTH_2 - wallheight))
-			my_mlx_pixel_put(vars->img, vars->i, j, 0x00008b);
+			my_mlx_pixel_put(&vars->img, vars->i, j, 0x00008b);
 		else if (j >= (WIN_WIDTH_2 - wallheight)
 			&& j <= (WIN_WIDTH_2 + wallheight))
 			wall_color(vars, j, a);
 		else
-			my_mlx_pixel_put(vars->img, vars->i, j, 0x414141);
+			my_mlx_pixel_put(&vars->img, vars->i, j, 0x414141);
 		j++;
 	}
 }

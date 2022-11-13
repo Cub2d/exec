@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:59:56 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 15:09:17 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/13 11:20:22 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	linehorizontal(t_vars *vars, int x1, int x2, int y)
 	}
 	while (min <= max)
 	{
-		my_mlx_pixel_put(vars->img, min, y, 0xFF0000);
+		my_mlx_pixel_put(&vars->img, min, y, 0xFF0000);
 		min++;
 	}
 }

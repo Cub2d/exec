@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:16:59 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 15:09:17 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/13 11:20:22 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	player_direction(t_vars *vars, t_point a, t_point b)
 	yinc = (int)(b.y - a.y) / (double) steps;
 	while (i < steps)
 	{
-		my_mlx_pixel_put(vars->img, a.x, a.y, 0xFF0000);
+		my_mlx_pixel_put(&vars->img, a.x, a.y, 0xFF0000);
 		a.x += xinc;
 		a.y += yinc;
 		i++;

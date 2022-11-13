@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 15:08:02 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/13 11:24:08 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_data {
 	char	*addr;
 	int		bpp;
 	int		height;
-	int 	width;
+	int		width;
 	int		line_length;
 	int		endian;
 }				t_data;
@@ -68,11 +68,11 @@ typedef struct s_vars {
 	double	rayangle;
 	double	castangle;
 	double	wallheight;
-	t_data	*img;
-	t_data	*we;
-	t_data	*ea;
-	t_data	*so;
-	t_data	*no;
+	t_data	img;
+	t_data	we;
+	t_data	ea;
+	t_data	so;
+	t_data	no;
 }				t_vars;
 
 typedef struct s_point {
