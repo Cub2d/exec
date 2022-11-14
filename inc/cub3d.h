@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/13 11:24:08 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/13 17:04:26 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIN_WIDTH 1200
 # define WIN_WIDTH_2 600
 # define ROTATE_SPEED 3
-# define MOUVEMENT_SPEED 8
+# define MOUVEMENT_SPEED 12
 # define TILE 64
 # define TILE_2 32
 # define M_SCALE 10

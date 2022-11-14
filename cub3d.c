@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/13 11:22:24 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/13 13:30:51 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,19 @@ int	mouse_rotate(int x, int y, t_vars *vars)
 
 void	init_textures(t_vars *vars)
 {
-	vars->so.img = mlx_xpm_file_to_image(vars->mlx, "textures/eagle.xpm",
+	vars->so.img = mlx_xpm_file_to_image(vars->mlx, "textures/red.xpm",
 			&vars->so.height, &vars->so.width);
 	vars->so.addr = mlx_get_data_addr(vars->so.img, &vars->so.bpp,
 			&vars->so.line_length, &vars->so.endian);
-	vars->we.img = mlx_xpm_file_to_image(vars->mlx, "textures/flag.xpm",
+	vars->we.img = mlx_xpm_file_to_image(vars->mlx, "textures/grey.xpm",
 			&vars->we.height, &vars->we.width);
 	vars->we.addr = mlx_get_data_addr(vars->we.img, &vars->we.bpp,
 			&vars->we.line_length, &vars->we.endian);
-	vars->no.img = mlx_xpm_file_to_image(vars->mlx, "textures/symbol.xpm",
+	vars->no.img = mlx_xpm_file_to_image(vars->mlx, "textures/red.xpm",
 			&vars->no.height, &vars->no.width);
 	vars->no.addr = mlx_get_data_addr(vars->no.img, &vars->no.bpp,
 			&vars->no.line_length, &vars->no.endian);
-	vars->ea.img = mlx_xpm_file_to_image(vars->mlx, "textures/hit.xpm",
+	vars->ea.img = mlx_xpm_file_to_image(vars->mlx, "textures/grey.xpm",
 			&vars->ea.height, &vars->ea.width);
 	vars->ea.addr = mlx_get_data_addr(vars->ea.img, &vars->ea.bpp,
 			&vars->ea.line_length, &vars->ea.endian);

@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 11:06:30 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/13 17:04:04 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	calculate_wall_height(t_point a, t_vars *vars)
 	distance = distance * cos(vars->rayangle * M_PI / 180);
 	plandist = WIN_WIDTH_2 / tan(30 * M_PI / 180);
 	vars->wallheight = (TILE / distance) * plandist;
-	if (!distance || vars->wallheight > WIN_WIDTH || vars->wallheight < 0)
+	if (!distance || vars->wallheight < 0)
 		vars->wallheight = WIN_WIDTH;
 	display_ray(vars->wallheight / 2, vars, a);
 }
@@ -59,7 +59,8 @@ t_point	horizontal_point(t_vars *vars, double castangle)
 	return (new_p(hx, hy));
 }
 
-//the algorithm to finding the first vertical intersection of my ray with the wall
+/*the algorithm to finding the first 
+vertical intersection of my ray with the wall*/
 
 t_point	vertical_point(t_vars *vars, double castangle)
 {
