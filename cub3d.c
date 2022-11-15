@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 16:24:18 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 16:45:36 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	initialization(t_vars *vars, char **av)
 	vars->txt = init_txt();
 	map(&vars->txt, av[1]);
 	check_map(vars->txt);
-	vars->height = vars->txt->length;
+	vars->width = vars->txt->length;
+	vars->height = vars->txt->height;
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH, WIN_WIDTH, "cub3d");
 	vars->img.img = mlx_new_image(vars->mlx, WIN_WIDTH, WIN_WIDTH);

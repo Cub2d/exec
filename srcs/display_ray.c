@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:28:15 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/13 11:25:39 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 16:47:31 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	display_ray(double wallheight, t_vars *vars, t_point a)
 	while (j < WIN_WIDTH)
 	{
 		if (j < (WIN_WIDTH_2 - wallheight))
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0x00008b);
+			my_mlx_pixel_put(&vars->img, vars->i, j, vars->txt->ccolor);
 		else if (j >= (WIN_WIDTH_2 - wallheight)
 			&& j <= (WIN_WIDTH_2 + wallheight))
 			wall_color(vars, j, a);
 		else
-			my_mlx_pixel_put(&vars->img, vars->i, j, 0x414141);
+			my_mlx_pixel_put(&vars->img, vars->i, j, vars->txt->fcolor);
 		j++;
 	}
 }

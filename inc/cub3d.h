@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 16:21:07 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 16:44:48 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_texture
 	int		counter;
 	char	**map;
 	int		length;
+	int		height;
 	int		fill;
 	int		x;
 	int		y;

@@ -29,6 +29,7 @@ void    map_counter(t_txt *txt, char *s)
 	txt->map =(char **)malloc(sizeof(char **) * (txt->counter + 1));
 	txt->map[0] = NULL;
 	txt->map[txt->counter] = NULL;
+	txt->height = txt->counter;
 }
 
 void	check_first_last(t_txt *txt)
