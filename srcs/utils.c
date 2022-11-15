@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:49:06 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 11:29:18 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 15:44:05 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	is_not_wall(t_vars *vars, double hx, double hy)
 	y = hy / TILE;
 	if (y >= 0 && y < vars->height)
 	{
-		if (x >= 0 && x < (int)ft_strlen(vars->map[y]))
+		if (x >= 0 && x < (int)ft_strlen(vars->txt->map[y]))
 		{
-			if (vars->map[y][x] != '1')
+			if (vars->txt->map[y][x] != '1')
 				return (1);
 		}
 	}

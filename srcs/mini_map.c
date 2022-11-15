@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:41:20 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/13 11:21:26 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 15:44:05 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	print_minimap(t_vars *vars)
 	double	y;
 
 	a = 0;
-	while (vars->map[a])
+	while (vars->txt->map[a])
 	{
 		b = 0;
-		while (vars->map[a][b])
+		while (vars->txt->map[a][b])
 		{
-			if (vars->map[a][b] == '1')
+			if (vars->txt->map[a][b] == '1')
 				put_tiles(vars, b * M_SCALE, a * M_SCALE, 0x8E8E8E);
-			if (vars->map[a][b] == '0')
+			if (vars->txt->map[a][b] == '0')
 				put_tiles(vars, b * M_SCALE, a * M_SCALE, 0x000000);
 			b++;
 		}

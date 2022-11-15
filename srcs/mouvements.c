@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouvements.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/09 11:58:49 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 15:44:05 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	move_up(t_vars *vars)
 	cx = vars->x / TILE;
 	y = (vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / TILE;
 	cy = vars->y / TILE;
-	if (vars->map[cy + vars->face][cx] == '1'
-		&& vars->map[cy][cx + vars->side] == '1')
+	if (vars->txt->map[cy + vars->face][cx] == '1'
+		&& vars->txt->map[cy][cx + vars->side] == '1')
 	{
 		if (x != cx && y != cy)
 			return ;
 	}
-	if (vars->map[y][x] != '1')
+	if (vars->txt->map[y][x] != '1')
 	{
 		vars->x = vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180));
 		vars->y = vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180));
@@ -48,13 +48,13 @@ void	move_down(t_vars *vars)
 	cx = vars->x / TILE;
 	y = (vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / TILE;
 	cy = vars->y / TILE;
-	if (vars->map[cy - vars->face][cx] == '1'
-		&& vars->map[cy][cx - vars->side] == '1')
+	if (vars->txt->map[cy - vars->face][cx] == '1'
+		&& vars->txt->map[cy][cx - vars->side] == '1')
 	{
 		if (x != cx && y != cy)
 			return ;
 	}
-	if (vars->map[y][x] != '1')
+	if (vars->txt->map[y][x] != '1')
 	{
 		vars->x = vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180));
 		vars->y = vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180));

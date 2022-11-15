@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/13 11:22:44 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 16:01:45 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_player_position(t_vars *vars, int a, int b)
 {
 	char	c;
 
-	c = vars->map[a][b];
+	c = vars->txt->map[a][b];
 	if (c == 'E' || c == 'N' || c == 'W' || c == 'S')
 	{
 		if (c == 'E')
@@ -75,7 +75,7 @@ void	check_player_position(t_vars *vars, int a, int b)
 			vars->angle = 180;
 		if (c == 'S')
 			vars->angle = 90;
-		vars->map[a][b] = '0';
+		vars->txt->map[a][b] = '0';
 		vars->x = b * TILE + TILE_2;
 		vars->y = a * TILE + TILE_2;
 	}
@@ -87,10 +87,11 @@ void	map_maker(t_vars *vars)
 	int	a;
 
 	a = 0;
-	while (vars->map[a])
+	while (vars->txt->map[a])
 	{
+		printf("map = %s \n", vars->txt->map[a]);
 		b = 0;
-		while (vars->map[a][b])
+		while (vars->txt->map[a][b])
 		{
 			check_player_position(vars, a, b);
 			b++;
