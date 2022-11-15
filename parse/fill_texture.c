@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fill_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:17:35 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 15:20:34 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/15 16:59:17 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
 // Fills every texture with its value
-void	fillNo(char **split, t_txt *text, char *str)
+void	fill_no(char **split, t_txt *text, char *str)
 {
 	split = ft_split(str, ' ');
 	if (split[2] == NULL)
@@ -27,7 +27,7 @@ void	fillNo(char **split, t_txt *text, char *str)
 		ft_error("Check the texture paths");
 }
 
-void	fillSo(char **split, t_txt *text, char *str)
+void	fill_so(char **split, t_txt *text, char *str)
 {
 	split = ft_split(str, ' ');
 	if (split[2] == NULL)
@@ -41,7 +41,7 @@ void	fillSo(char **split, t_txt *text, char *str)
 		ft_error("Check the texture paths");
 }
 
-void	fillEa(char **split, t_txt *text, char *str)
+void	fill_ea(char **split, t_txt *text, char *str)
 {
 	split = ft_split(str, ' ');
 	if (split[2] == NULL)
@@ -55,7 +55,7 @@ void	fillEa(char **split, t_txt *text, char *str)
 		ft_error("Check the texture paths");
 }
 
-void	fillWe(char **split, t_txt *text, char *str)
+void	fill_we(char **split, t_txt *text, char *str)
 {
 	split = ft_split(str, ' ');
 	if (split[2] == NULL)

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 14:44:03 btxt->y zihirri           #+#    #+#             */
-/*   Updated: 2022/10/27 20:31:27 btxt->y zihirri          ###   ########.fr       */
+/*   Created: 2022/11/15 17:02:36 by cjad              #+#    #+#             */
+/*   Updated: 2022/11/15 17:05:06 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
 // Counts the map lines then allocate memortxt->y to it
-void    map_counter(t_txt *txt, char *s)
+void	map_counter(t_txt *txt, char *s)
 {
 	int		fd;
 	char	*str;
-	
+
 	fd = open(s, O_RDONLY);
 	str = get_next_line(fd);
 	while (str)
@@ -26,7 +26,7 @@ void    map_counter(t_txt *txt, char *s)
 			txt->counter++;
 		str = get_next_line(fd);
 	}
-	txt->map =(char **)malloc(sizeof(char **) * (txt->counter + 1));
+	txt->map = (char **)malloc(sizeof(char **) * (txt->counter + 1));
 	txt->map[0] = NULL;
 	txt->map[txt->counter] = NULL;
 	txt->height = txt->counter;
@@ -35,13 +35,13 @@ void    map_counter(t_txt *txt, char *s)
 void	check_first_last(t_txt *txt)
 {
 	int	i;
-	int size;
-	
+	int	size;
+
 	size = txt->counter - 1;
 	i = 0;
 	while (txt->map[0][i])
 	{
-		if(txt->map[0][i] != '1' && txt->map[0][i] != ' ')
+		if (txt->map[0][i] != '1' && txt->map[0][i] != ' ')
 			ft_error("Please check your map again");
 		i++;
 	}
@@ -49,7 +49,7 @@ void	check_first_last(t_txt *txt)
 	i = 0;
 	while (txt->map[size][i])
 	{
-		if(txt->map[size][i] != '1' && txt->map[size][i] != ' ')
+		if (txt->map[size][i] != '1' && txt->map[size][i] != ' ')
 			ft_error("Please check your map again");
 		i++;
 	}
@@ -72,11 +72,11 @@ void	check_map(t_txt *txt)
 				|| txt->map[txt->x][txt->y] == '1' || txt->map[txt->x][txt->y] == '0'
 				|| txt->map[txt->x][txt->y] == ' ')
 			{
-				if (txt->map[txt->x][txt->y] == 'N' || txt->map[txt->x][txt->y] == 'S' 
+				if (txt->map[txt->x][txt->y] == 'N' || txt->map[txt->x][txt->y] == 'S'
 					|| txt->map[txt->x][txt->y] == 'E' || txt->map[txt->x][txt->y] == 'W')
-				check_set_pos(txt);
+					check_set_pos(txt);
 				if (txt->map[txt->x][txt->y] == '0')
-				check_zero(txt);
+					check_zero(txt);
 				txt->y++;
 			}
 			else

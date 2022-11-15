@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:51:28 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 15:54:30 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/15 17:08:52 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,62 +19,63 @@ void	get_texture(t_txt *text, char *str)
 	split = NULL;
 	if (text->no == NULL || text->so == NULL
 		|| text->ea == NULL || text->we == NULL
-			|| text->c == NULL || text->f == NULL || text->map[0] == NULL)
+		|| text->c == NULL || text->f == NULL || text->map[0] == NULL)
 				str = skip_whitespace(str);
 	if (ft_strncmp(str, "NO ", 3) == 0)
-		fillNo(split, text, str);
+		fill_no(split, text, str);
 	else if (ft_strncmp(str, "SO ", 3) == 0)
-		fillSo(split, text, str);
+		fill_so(split, text, str);
 	else if (ft_strncmp(str, "WE ", 3) == 0)
-		fillWe(split, text, str);
+		fill_we(split, text, str);
 	else if (ft_strncmp(str, "EA ", 3) == 0)
-		fillEa(split, text, str);
+		fill_ea(split, text, str);
 	else if (ft_strncmp(str, "F ", 2) == 0 || ft_strncmp(str, "C ", 2) == 0)
 		get_color(text, str);
 	else if (str[0] == '\0' && text->map[0] == NULL)
-		return;
+		return ;
 	else if (str[0] == '1' || check_space(str) == OK)
 	{
 		text->map[text->fill] = str;
 		text->fill++;
 	}
 	else if (str[0] == ' ')
-		return;
+		return ;
 	else if (text->fill == text->counter)
-		return;
+		return ;
 	else
 		ft_error("Invalid Map Here");
 }
 
 void	check_if_filled(t_txt *txt)
 {
-		if (txt->no == NULL || txt->so == NULL
-			|| txt->ea == NULL || txt->we == NULL
-				|| txt->c == NULL || txt->f == NULL)
-			ft_error("Missing texture or color!");
-		else
-			return;
+	if (txt->no == NULL || txt->so == NULL
+		|| txt->ea == NULL || txt->we == NULL
+		|| txt->c == NULL || txt->f == NULL)
+		ft_error("Missing texture or color!");
+	else
+		return ;
 }
 
 // Checks if all the attributes were filled
 int	check_if_filled_v2(t_txt *txt)
 {
-		if (txt->no == NULL || txt->so == NULL
-			|| txt->ea == NULL || txt->we == NULL
-				|| txt->c == NULL || txt->f == NULL)
-				return (KO);
-		else
-			return (OK);
+	if (txt->no == NULL || txt->so == NULL
+		|| txt->ea == NULL || txt->we == NULL
+		|| txt->c == NULL || txt->f == NULL)
+		return (KO);
+	else
+		return (OK);
 }
 
 // Checks if the input files ends the .cub extention
 int	file_extention(char *s)
 {
 	char	*point;
-	
-	if( (point = ft_strrchr(s, '.')) != NULL )
+
+	point = ft_strrchr(s, '.');
+	if (point != NULL)
 	{
-		if (ft_strcmp(point,".cub") != 0)
+		if (ft_strcmp(point, ".cub") != 0)
 			ft_error("Check the file's path");
 	}
 	return (0);
@@ -125,7 +126,6 @@ t_txt	*init_txt(void)
 	txt->r = 0;
 	txt->g = 0;
 	txt->b = 0;
-
 	return (txt);
 }
 

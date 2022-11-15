@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 16:44:48 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/15 16:59:12 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define TILE_2 32
 # define M_SCALE 10
 
-#define OK 0
-#define KO 1
+# define OK 0
+# define KO 1
 
 typedef struct s_gnl {
 	char	c;
@@ -143,23 +143,23 @@ int		yin(t_vars *vars, double castangle);
 int		is_not_wall(t_vars *vars, double hx, double hy);
 
 // Map Parse
-void	fillNo(char **split, t_txt *text, char *str);
-void	fillSo(char **split, t_txt *text, char *str);
-void	fillEa(char **split, t_txt *text, char *str);
-void	fillWe(char **split, t_txt *text, char *str);
+void	fill_no(char **split, t_txt *text, char *str);
+void	fill_so(char **split, t_txt *text, char *str);
+void	fill_ea(char **split, t_txt *text, char *str);
+void	fill_we(char **split, t_txt *text, char *str);
 void	get_color(t_txt *text, char *str);
 void	checkalpha(char **str);
-void	fillF(char **split, t_txt *text, char *str);
-void	fillC(char **split, t_txt *text, char *str);
+void	fill_f(char **split, t_txt *text, char *str);
+void	fill_c(char **split, t_txt *text, char *str);
 void	set_floor_color(t_txt *txt);
 void	set_ceilling_color(t_txt *txt);
 void	count_commas(char *str);
 void	ft_error(char *str);
-void    map_counter(t_txt *txt, char *s);
+void	map_counter(t_txt *txt, char *s);
 void	check_map(t_txt *txt);
-void 	check_set_pos(t_txt *txt);
+void	check_set_pos(t_txt *txt);
 void	check_zero(t_txt *txt);
-void	map(t_txt **txt , char *s);
+void	map(t_txt **txt, char *s);
 void	get_colors(t_txt *text, char *str);
 void	check_if_filled(t_txt *txt);
 void	get_texture(t_txt *text, char *str);
@@ -172,13 +172,12 @@ int		file_extention(char *s);
 int		check_if_filled_v2(t_txt *txt);
 t_txt	*init_txt(void);
 
-
 // Extra Functions
-char	**ft_split(char  *s, char c);
-char	*ft_strchr( char *haystack, int needle);
-char	*ft_strjoin(char  *s1, char  *s2);
-char	*ft_strrchr( char *haystack, int needle);
-char	*ft_substr(char  *s, unsigned int start, size_t len);
+char	**ft_split(char *s, char c);
+char	*ft_strchr(char *haystack, int needle);
+char	*ft_strjoin(char *s1, char  *s2);
+char	*ft_strrchr(char *haystack, int needle);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *pointer, int value, size_t count);
 int		ft_atoi( char *str);

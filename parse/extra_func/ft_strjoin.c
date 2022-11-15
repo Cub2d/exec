@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:53:34 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 15:48:18 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/15 17:10:06 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static void	ft_strcat(char *s1,  char *s2)
+static void	ft_strcat(char *s1, char *s2)
 {
 	int	i;
 	int	j;
@@ -29,7 +29,7 @@ static void	ft_strcat(char *s1,  char *s2)
 	s1[i + j] = '\0';
 }
 
-char	*ft_strjoin(char  *s1, char  *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		s1l;
 	int		s2l;

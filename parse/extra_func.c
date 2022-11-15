@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:55:55 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 15:20:33 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/15 16:58:09 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,39 @@ int	check_space(char *str)
 		return (OK);
 	else
 		return (KO);
-	return(OK);
+	return (OK);
 }
 
 char	*skip_whitespace(char *str)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	while (str[n] == '\f' || str[n] == '\n' || str[n] == 32
-	|| str[n] == '\r' || str[n] == '\v' || str[n] == '\t')
+		|| str[n] == '\r' || str[n] == '\v' || str[n] == '\t')
 		n++;
 	return (str + n);
 }
 
 int	is_a_whitespace(char *str)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	if (str[n] == '\f' || str[n] == '\n' || str[n] == 32
-	|| str[n] == '\r' || str[n] == '\v' || str[n] == '\t')
+		|| str[n] == '\r' || str[n] == '\v' || str[n] == '\t')
 		return (OK);
 	return (KO);
-
 }
+
 // Fills the Floor and Ceilling color with its respective value
-void	fillF(char **split, t_txt *text, char *str)
+void	fill_f(char **split, t_txt *text, char *str)
 {
 	split = ft_split(str, ' ');
 	if (text->f == NULL)
 	{
 		if (split[2] == NULL)
-			text->f = split[1];	
+			text->f = split[1];
 		else
 		{
 			ft_error("ERROR check the colors");
@@ -66,7 +66,7 @@ void	fillF(char **split, t_txt *text, char *str)
 		ft_error("ERROR tried to insert floor color twice or more");
 }
 
-void	fillC(char **split, t_txt *text, char *str)
+void	fill_c(char **split, t_txt *text, char *str)
 {
 	split = ft_split(str, ' ');
 	if (text->c == NULL)
@@ -78,15 +78,14 @@ void	fillC(char **split, t_txt *text, char *str)
 	}
 	else
 		ft_error("ERROR tried to insert ceilling color twice or more");
-
 }
 
 // Prevent the use of more or less than 2 commas in the color section
 void	count_commas(char *str)
 {
 	int	i;
-	int counter;
-	
+	int	counter;
+
 	i = 0;
 	counter = 0;
 	while (str[i] != '\0')

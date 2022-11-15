@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:02:12 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 15:48:18 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/15 17:09:43 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static int	calculate_len(char  *s, char c)
+static int	calculate_len(char *s, char c)
 {
 	int	len;
 	int	i;
@@ -32,7 +32,7 @@ static int	calculate_len(char  *s, char c)
 	return (len);
 }
 
-static char	*getstring(char  *str, char c)
+static char	*getstring(char *str, char c)
 {
 	int		i;
 	char	*mystr;
@@ -53,7 +53,7 @@ static char	*getstring(char  *str, char c)
 	return (mystr);
 }
 
-static int	process(char **strs, char  *s, char c)
+static int	process(char **strs, char *s, char c)
 {
 	int		i;
 	int		k;
@@ -86,7 +86,7 @@ void	free_all(char **strs)
 	free(strs);
 }
 
-char	**ft_split(char  *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**strs;
 	int		len;
