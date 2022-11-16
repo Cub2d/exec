@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   extra_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:55:55 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 16:58:09 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:11:12 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-int	check_space(char *str)
-{
-	int	n;
-
-	n = 0;
-	while (str[n] == ' ')
-		n++;
-	if (str[n + 1] == '1')
-		return (OK);
-	else
-		return (KO);
-	return (OK);
-}
 
 char	*skip_whitespace(char *str)
 {
@@ -92,18 +78,10 @@ void	count_commas(char *str)
 	{
 		if (str[i] == ',' && str[i + 1] == ',')
 			ft_error("Two or more conssicutive commas in the color section");
-		// else if (str[i] == ',' && str[i + 1] == '\0')
-		// 	ft_error("Wrong input in the color section");
 		else if (str[i] == ',')
 			counter++;
 		i++;
 	}
 	if ((counter > 2 || counter < 2) || (str[i - 1] == ',' && str[i] == '\0'))
 		ft_error("Wrong input in the color section");
-}
-
-void	ft_error(char *str)
-{
-	printf("Error\n%s\n", str);
-	exit(-1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceilling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:45:49 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 17:01:42 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:21:39 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void	set_floor_color(t_txt *txt)
 	char	**split;
 	int		convert;
 	int		i;
-	int		clr;
 
-	clr = 0;
 	i = 0;
 	split = ft_split(txt->f, ',');
 	check_alpha(split);
@@ -66,19 +64,9 @@ void	set_floor_color(t_txt *txt)
 	{
 		convert = ft_atoi(split[i]);
 		if (convert > 255 || convert < 0)
-		{
-			printf("Error\nColor is out of Range\n");
-			exit(1);
-		}
+			ft_error("Color is out of Range");
 		else
-		{
-			if (i == 0)
-				txt->r = convert;
-			else if (i == 2)
-				txt->g = convert;
-			else
-				txt->b = convert;
-		}
+			get_rgb(txt, i, convert);
 		i++;
 	}
 	txt->fcolor = (txt->r << 16 | txt->g << 8 | txt->b);
@@ -97,19 +85,9 @@ void	set_ceilling_color(t_txt *txt)
 	{
 		convert = ft_atoi(split[i]);
 		if (convert > 255 || convert < 0)
-		{
-			printf("Error\nColor is out of Range\n");
-			exit(1);
-		}
+			ft_error("Color is out of Range");
 		else
-		{
-			if (i == 0)
-				txt->r = convert;
-			else if (i == 2)
-				txt->g = convert;
-			else
-				txt->b = convert;
-		}
+			get_rgb(txt, i, convert);
 		i++;
 	}
 	txt->ccolor = (txt->r << 16 | txt->g << 8 | txt->b);

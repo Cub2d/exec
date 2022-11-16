@@ -6,13 +6,14 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 16:11:08 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:42:32 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-// the algorithm to calculate the wall height on my screen relying on the distance to it
+/* the algorithm to calculate the wall height on my 
+screen relying on the distance to it */
 
 void	calculate_wall_height(t_point a, t_vars *vars)
 {
@@ -29,7 +30,8 @@ void	calculate_wall_height(t_point a, t_vars *vars)
 	display_ray(vars->wallheight / 2, vars, a);
 }
 
-//the algorithm to finding the first horizontal intersection of my ray with the wall
+/* the algorithm to finding the first horizontal intersection
+of my ray with the wall */
 
 t_point	horizontal_point(t_vars *vars, double castangle)
 {

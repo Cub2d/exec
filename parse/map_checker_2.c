@@ -6,11 +6,40 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 13:06:12 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 15:20:40 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:40:36 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+// Initialize the map structure 
+t_txt	*init_txt(void)
+{
+	t_txt	*txt;
+
+	txt = malloc(sizeof(t_txt));
+	if (!txt)
+		return (NULL);
+	txt->spawn_pos = NULL;
+	txt->no = NULL;
+	txt->so = NULL;
+	txt->we = NULL;
+	txt->ea = NULL;
+	txt->f = NULL;
+	txt->c = NULL;
+	txt->map = NULL;
+	txt->fill = 0;
+	txt->counter = 0;
+	txt->fcolor = 0;
+	txt->ccolor = 0;
+	txt->length = 0;
+	txt->x = 1;
+	txt->y = 0;
+	txt->r = 0;
+	txt->g = 0;
+	txt->b = 0;
+	return (txt);
+}
 
 void	check_set_pos(t_txt *t)
 {

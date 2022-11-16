@@ -6,6 +6,7 @@ CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit -fsanit
 FILES = cub3d.c \
 		./srcs/dda_algho.c\
 		./srcs/utils.c\
+		./srcs/utils_2.c\
 		./srcs/mouvements.c \
 		./srcs/show_map.c \
 		./srcs/drawing_circle.c \
@@ -14,6 +15,7 @@ FILES = cub3d.c \
 		./srcs/mini_utils.c \
 		./srcs/get_next_line.c \
 		./parse/extra_func.c \
+		./parse/extra_func_2.c \
 		./parse/fill_texture.c \
 		./parse/floor_ceilling.c \
 		./parse/map_checker_2.c \

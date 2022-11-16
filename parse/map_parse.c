@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:51:28 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 17:08:52 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:40:20 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	get_texture(t_txt *text, char *str)
 	char	**split;
 
 	split = NULL;
-	if (text->no == NULL || text->so == NULL
-		|| text->ea == NULL || text->we == NULL
-		|| text->c == NULL || text->f == NULL || text->map[0] == NULL)
-				str = skip_whitespace(str);
+	if (is_not_filled(text) == OK)
+		str = skip_whitespace(str);
 	if (ft_strncmp(str, "NO ", 3) == 0)
 		fill_no(split, text, str);
 	else if (ft_strncmp(str, "SO ", 3) == 0)
@@ -34,10 +32,7 @@ void	get_texture(t_txt *text, char *str)
 	else if (str[0] == '\0' && text->map[0] == NULL)
 		return ;
 	else if (str[0] == '1' || check_space(str) == OK)
-	{
-		text->map[text->fill] = str;
-		text->fill++;
-	}
+		map_filler(text, str);
 	else if (str[0] == ' ')
 		return ;
 	else if (text->fill == text->counter)
@@ -82,7 +77,7 @@ int	file_extention(char *s)
 }
 
 // GO!
-void	map(t_txt **txt , char *s)
+void	map(t_txt **txt, char *s)
 {
 	int		fd;
 	char	*str;
@@ -98,35 +93,6 @@ void	map(t_txt **txt , char *s)
 	}
 	check_if_filled(*txt);
 	free(str);
-}
-
-// Initialize the map structure 
-t_txt	*init_txt(void)
-{
-	t_txt	*txt;
-
-	txt = malloc(sizeof(t_txt));
-	if (!txt)
-		return (NULL);
-	txt->spawn_pos = NULL;
-	txt->no = NULL;
-	txt->so = NULL;
-	txt->we = NULL;
-	txt->ea = NULL;
-	txt->f = NULL;
-	txt->c = NULL;
-	txt->map = NULL;
-	txt->fill = 0;
-	txt->counter = 0;
-	txt->fcolor = 0;
-	txt->ccolor = 0;
-	txt->length = 0;
-	txt->x = 1;
-	txt->y = 0;
-	txt->r = 0;
-	txt->g = 0;
-	txt->b = 0;
-	return (txt);
 }
 
 // int main(int ac, char **av){

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:02:36 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 17:05:06 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:32:22 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,29 @@ void	check_first_last(t_txt *txt)
 		txt->length = i;
 }
 
+void	check_map_start(t_txt *txt)
+{
+	if (txt->map[txt->x][txt->y] == 'N'
+		|| txt->map[txt->x][txt->y] == 'S'
+		|| txt->map[txt->x][txt->y] == 'E'
+		|| txt->map[txt->x][txt->y] == 'W'
+		|| txt->map[txt->x][txt->y] == '1'
+		|| txt->map[txt->x][txt->y] == '0'
+		|| txt->map[txt->x][txt->y] == ' ')
+	{
+		if (txt->map[txt->x][txt->y] == 'N'
+			|| txt->map[txt->x][txt->y] == 'S'
+			|| txt->map[txt->x][txt->y] == 'E'
+			|| txt->map[txt->x][txt->y] == 'W')
+			check_set_pos(txt);
+		if (txt->map[txt->x][txt->y] == '0')
+			check_zero(txt);
+		txt->y++;
+	}
+	else
+		ft_error("Incorrect element");
+}
+
 void	check_map(t_txt *txt)
 {
 	int	size;
@@ -67,20 +90,7 @@ void	check_map(t_txt *txt)
 	{
 		while (txt->map[txt->x][txt->y])
 		{
-			if (txt->map[txt->x][txt->y] == 'N' || txt->map[txt->x][txt->y] == 'S'
-				|| txt->map[txt->x][txt->y] == 'E' || txt->map[txt->x][txt->y] == 'W'
-				|| txt->map[txt->x][txt->y] == '1' || txt->map[txt->x][txt->y] == '0'
-				|| txt->map[txt->x][txt->y] == ' ')
-			{
-				if (txt->map[txt->x][txt->y] == 'N' || txt->map[txt->x][txt->y] == 'S'
-					|| txt->map[txt->x][txt->y] == 'E' || txt->map[txt->x][txt->y] == 'W')
-					check_set_pos(txt);
-				if (txt->map[txt->x][txt->y] == '0')
-					check_zero(txt);
-				txt->y++;
-			}
-			else
-				ft_error("incorrect element");
+			check_map_start(txt);
 		}
 		txt->x++;
 		if (txt->y > txt->length)

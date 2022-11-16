@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 16:45:36 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:06:45 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/cub3d.h"
-
-int	esc(void)
-{
-	exit(1);
-	return (0);
-}
-
-t_point	new_p(double x, double y)
-{
-	t_point	a;
-
-	a.x = x;
-	a.y = y;
-	return (a);
-}
 
 void	rays(t_vars *vars)
 {

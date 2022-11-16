@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:19:18 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/15 16:27:06 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:43:32 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-size_t	ft_strlen( char *c)
+size_t	ft_strlen(char *c)
 {
 	int	i;
 
@@ -41,32 +41,7 @@ void	ft_strcat(char *s1, char *s2)
 	s1[i + j] = '\0';
 }
 
-char	*st_strjoin(char *s1, char c)
-{
-	int		s1l;
-	char	*s;
-
-	if (!s1)
-		return (NULL);
-	s1l = ft_strlen(s1);
-	s = (char *)malloc(sizeof(char) * (s1l + 2));
-	if (!s)
-		return (NULL);
-	s[0] = '\0';
-	ft_strcat(s, s1);
-	if (c == '\n')
-	{
-		s[s1l] = '\0';
-		free(s1);
-		return (s);
-	}
-	s[s1l] = c;
-	s[s1l + 1] = '\0';
-	free(s1);
-	return (s);
-}
-
-static void	ft_strcpy(char *s1,  char *s2)
+static void	ft_strcpy(char *s1, char *s2)
 {
 	int	i;
 

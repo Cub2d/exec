@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 16:59:12 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:47:59 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ int		keys_hook(int key, t_vars *vars);
 int		xin(t_vars *vars, double castangle);
 int		yin(t_vars *vars, double castangle);
 int		is_not_wall(t_vars *vars, double hx, double hy);
+int		esc(void);
 
 // Map Parse
 void	fill_no(char **split, t_txt *text, char *str);
@@ -153,6 +154,7 @@ void	fill_f(char **split, t_txt *text, char *str);
 void	fill_c(char **split, t_txt *text, char *str);
 void	set_floor_color(t_txt *txt);
 void	set_ceilling_color(t_txt *txt);
+void	map_filler(t_txt *text, char *str);
 void	count_commas(char *str);
 void	ft_error(char *str);
 void	map_counter(t_txt *txt, char *s);
@@ -170,16 +172,20 @@ int		check_if_filled_v2(t_txt *txt);
 int		check_space(char *str);
 int		file_extention(char *s);
 int		check_if_filled_v2(t_txt *txt);
+int		is_not_filled(t_txt *text);
+void	get_rgb(t_txt *txt, int i, int convert);
 t_txt	*init_txt(void);
 
 // Extra Functions
+char	*st_strjoin(char *s1, char c);
 char	**ft_split(char *s, char c);
 char	*ft_strchr(char *haystack, int needle);
-char	*ft_strjoin(char *s1, char  *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strrchr(char *haystack, int needle);
 char	*ft_substr(char *s, unsigned int start, size_t len);
-void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *pointer, int value, size_t count);
+void	ft_bzero(void *s, size_t n);
+void	get_rgb(t_txt *txt, int i, int convert);
 int		ft_atoi( char *str);
 int		ft_isdigit(int c);
 int		ft_strncmp(char *str1, char *str2, size_t len);

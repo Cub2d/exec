@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:16:59 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/13 13:13:21 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:47:05 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	player_direction(t_vars *vars, t_point a, t_point b)
 	}
 }
 
-// using the player angle and finding the angles of the lines i need to draw for my water drop
+// using the player angle and finding the angles 
+//of the lines i need to draw for my water drop
 
 void	water_drop(t_vars *vars, t_point a)
 {

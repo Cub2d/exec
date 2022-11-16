@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   show_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 16:46:41 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/16 15:47:23 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-//calculating the distance to the first vertical and horizontal intersection of my ray with
-//the wall and then picking the shortest distance of them
+//calculating the distance to the first vertical and horizontal intersection 
+//of my ray with the wall and then picking the shortest distance of them
 
 t_point	closest_wall(t_vars *vars, double castangle)
 {
