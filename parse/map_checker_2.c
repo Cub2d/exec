@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 13:06:12 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/16 19:18:28 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/16 19:18:39 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	check_set_pos(t_txt *t)
 
 void	check_zero(t_txt *t)
 {
-	printf("%d %d\n", t->x, t->y);
 	if ((t->map[t->x][t->y + 1] != '0' && t->map[t->x][t->y + 1] != '1'
 		&& t->map[t->x][t->y + 1] != 'N' && t->map[t->x][t->y + 1] != 'S'
 		&& t->map[t->x][t->y + 1] != 'W' && t->map[t->x][t->y + 1] != 'E')
