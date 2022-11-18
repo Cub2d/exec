@@ -6,25 +6,11 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:02:36 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/18 15:23:24 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:21:29 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-int	is_playerchar(char c)
-{
-    if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-        return (1);
-    return (0);
-}
-
-int	is_mapchar(char c)
-{
-    if (c == ' ' || c == '1' || c == '0' || is_playerchar(c))
-        return (1);
-    return (0);
-}
 
 // Counts the map lines then allocate memortxt->y to it
 void	map_counter(t_txt *txt, char *s)
@@ -38,12 +24,16 @@ void	map_counter(t_txt *txt, char *s)
 	{
 		if ((str[0] == '1' || check_space(str) == OK))
 			txt->counter++;
+		free(str);
 		str = get_next_line(fd);
 	}
 	txt->map = (char **)malloc(sizeof(char **) * (txt->counter + 1));
+	if (!(txt->map))
+		return ;
 	txt->map[0] = NULL;
 	txt->map[txt->counter] = NULL;
 	txt->height = txt->counter;
+	free(str);
 }
 
 void	check_first_last(t_txt *txt)
@@ -93,7 +83,6 @@ void	check_map(t_txt *txt)
 	check_first_last(txt);
 	while (txt->x < size - 1)
 	{
-		// printf("(%s)\n", txt->map[txt->x]);
 		while (txt->map[txt->x][txt->y])
 			check_map_start(txt);
 		txt->x++;

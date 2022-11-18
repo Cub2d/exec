@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:19:18 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/16 15:43:32 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:03:02 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_strcpy(char *s1, char *s2)
 	s1[i] = '\0';
 }
 
-char	*ft_strdup( char *s1)
+char	*ft_strdup(char *s1)
 {
 	int		i;
 	char	*scpy;

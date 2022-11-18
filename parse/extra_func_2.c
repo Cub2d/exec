@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:10:52 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/18 15:14:34 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:19:47 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ int	is_not_filled(t_txt *text)
 {
 	if (text->no == NULL || text->so == NULL
 		|| text->ea == NULL || text->we == NULL
-		|| text->c == NULL || text->f == NULL
-		)
+		|| text->c == NULL || text->f == NULL)
 		return (OK);
 	else
 		return (KO);
@@ -55,6 +54,6 @@ int	is_not_filled(t_txt *text)
 
 void	map_filler(t_txt *text, char *str)
 {
-	text->map[text->fill] = str;
-		text->fill++;
+	text->map[text->fill] = ft_strdup(str);
+	text->fill++;
 }

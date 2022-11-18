@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:51:28 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/18 15:16:32 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:22:18 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	map(t_txt **txt, char *s)
 	while (str)
 	{
 		get_texture(*txt, str);
+		free(str);
 		str = get_next_line(fd);
 	}
 	check_if_filled(*txt);

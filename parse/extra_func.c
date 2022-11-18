@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:55:55 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/16 15:11:12 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 19:05:06 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ void	fill_f(char **split, t_txt *text, char *str)
 	if (text->f == NULL)
 	{
 		if (split[2] == NULL)
-			text->f = split[1];
+		{
+			text->f = ft_strdup(split[1]);
+			free_all(split);
+		}
 		else
 		{
 			ft_error("ERROR check the colors");
-			free(split);
 		}
 	}
 	else
@@ -58,7 +60,10 @@ void	fill_c(char **split, t_txt *text, char *str)
 	if (text->c == NULL)
 	{
 		if (split[2] == NULL)
-			text->c = split[1];
+		{
+			text->c = ft_strdup(split[1]);
+			free_all(split);
+		}
 		else
 			ft_error("ERROR check the colors");
 	}

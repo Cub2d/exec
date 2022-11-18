@@ -1,7 +1,7 @@
 CC = @cc
 
 
-CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit
 
 FILES = cub3d.c \
 		./srcs/dda_algho.c\
@@ -30,6 +30,7 @@ FILES = cub3d.c \
 		./parse/extra_func/ft_strchr.c \
 		./parse/extra_func/ft_strjoin.c \
 		./parse/extra_func/ft_substr.c \
+		./parse/extra_func/ft_utils.c \
 
 
 NAME = cub3d

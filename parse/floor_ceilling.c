@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:45:49 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/16 15:21:39 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:26:47 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	set_floor_color(t_txt *txt)
 		i++;
 	}
 	txt->fcolor = (txt->r << 16 | txt->g << 8 | txt->b);
+	free_all(split);
 }
 
 void	set_ceilling_color(t_txt *txt)
@@ -91,4 +92,5 @@ void	set_ceilling_color(t_txt *txt)
 		i++;
 	}
 	txt->ccolor = (txt->r << 16 | txt->g << 8 | txt->b);
+	free_all(split);
 }
