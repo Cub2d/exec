@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:51:28 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/16 15:40:20 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:16:32 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,21 +94,3 @@ void	map(t_txt **txt, char *s)
 	check_if_filled(*txt);
 	free(str);
 }
-
-// int main(int ac, char **av){
-// 	t_txt	*txt;
-
-// 	txt = init_txt();
-// 	if (ac == 2)
-// 	{
-// 		map(&txt, av[1]);
-// 		check_map(txt);
-// 	}
-// 	else
-// 	{
-// 		printf("Error\nCheck your arguments !");
-// 		free(txt);
-// 	}
-// 	free(txt);
-// 	return (0);
-// }

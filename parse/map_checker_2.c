@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 13:06:12 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/16 19:18:39 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:16:20 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void	check_zero(t_txt *t)
 		|| (t->map[t->x + 1][t->y] != '0' && t->map[t->x + 1][t->y] != '1'
 		&& t->map[t->x + 1][t->y] != 'N' && t->map[t->x + 1][t->y] != 'S'
 		&& t->map[t->x + 1][t->y] != 'W' && t->map[t->x + 1][t->y] != 'E'))
-		ft_error("MAP INCOHERENCE");
+			ft_error("MAP INCOHERENCE");
 }

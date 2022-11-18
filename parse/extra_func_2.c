@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:10:52 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/16 15:41:08 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:14:34 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_space(char *str)
 	n = 0;
 	while (str[n] == ' ')
 		n++;
-	if (str[n + 1] == '1')
+	if (str[n] == '1')
 		return (OK);
 	else
 		return (KO);
@@ -47,7 +47,7 @@ int	is_not_filled(t_txt *text)
 	if (text->no == NULL || text->so == NULL
 		|| text->ea == NULL || text->we == NULL
 		|| text->c == NULL || text->f == NULL
-		|| text->map[0] == NULL)
+		)
 		return (OK);
 	else
 		return (KO);

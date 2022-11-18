@@ -6,11 +6,25 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:02:36 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/16 15:32:22 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:23:24 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+int	is_playerchar(char c)
+{
+    if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+        return (1);
+    return (0);
+}
+
+int	is_mapchar(char c)
+{
+    if (c == ' ' || c == '1' || c == '0' || is_playerchar(c))
+        return (1);
+    return (0);
+}
 
 // Counts the map lines then allocate memortxt->y to it
 void	map_counter(t_txt *txt, char *s)
@@ -59,18 +73,9 @@ void	check_first_last(t_txt *txt)
 
 void	check_map_start(t_txt *txt)
 {
-	if (txt->map[txt->x][txt->y] == 'N'
-		|| txt->map[txt->x][txt->y] == 'S'
-		|| txt->map[txt->x][txt->y] == 'E'
-		|| txt->map[txt->x][txt->y] == 'W'
-		|| txt->map[txt->x][txt->y] == '1'
-		|| txt->map[txt->x][txt->y] == '0'
-		|| txt->map[txt->x][txt->y] == ' ')
+	if (is_mapchar(txt->map[txt->x][txt->y]))
 	{
-		if (txt->map[txt->x][txt->y] == 'N'
-			|| txt->map[txt->x][txt->y] == 'S'
-			|| txt->map[txt->x][txt->y] == 'E'
-			|| txt->map[txt->x][txt->y] == 'W')
+		if (is_playerchar(txt->map[txt->x][txt->y]))
 			check_set_pos(txt);
 		if (txt->map[txt->x][txt->y] == '0')
 			check_zero(txt);
@@ -88,10 +93,9 @@ void	check_map(t_txt *txt)
 	check_first_last(txt);
 	while (txt->x < size - 1)
 	{
+		// printf("(%s)\n", txt->map[txt->x]);
 		while (txt->map[txt->x][txt->y])
-		{
 			check_map_start(txt);
-		}
 		txt->x++;
 		if (txt->y > txt->length)
 			txt->length = txt->y;

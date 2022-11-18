@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/16 15:47:59 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:23:46 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,5 +190,7 @@ int		ft_atoi( char *str);
 int		ft_isdigit(int c);
 int		ft_strncmp(char *str1, char *str2, size_t len);
 int		ft_strcmp(char *s1, char *s2);
+int		is_playerchar(char c);
+int		is_mapchar(char c);
 
 #endif
