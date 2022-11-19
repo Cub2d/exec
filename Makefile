@@ -35,6 +35,8 @@ FILES = cub3d.c \
 
 NAME = cub3d
 
+NAMEBONUS = cub3d_bonus
+
 C_RED = \033[1;31m
 C_GREEN = \033[1;32m
 C_L_BLUE = \033[1;34m
@@ -46,8 +48,13 @@ $(NAME) : $(FILES)
 		$(CC) $(CFLAGS) $(FILES) -o $(NAME)
 		@echo "$(C_GREEN)["cub3d" CREATED]$(C_RES)"
 
+bonus : $(NAMEBONUS)
+
+$(NAMEBONUS) : $(FILES)
+		$(CC) $(CFLAGS) $(FILES) -o $(NAMEBONUS)
+		@echo "$(C_GREEN)["cub3d bonus" CREATED]$(C_RES)"
 clean :
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(NAMEBONUS)
 	@echo "$(C_RED)["cub3d" REMOVED]$(C_RES)"
 
 fclean : clean
