@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/18 19:03:09 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/19 13:23:59 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ void	map(t_txt **txt, char *s);
 void	get_colors(t_txt *text, char *str);
 void	check_if_filled(t_txt *txt);
 void	get_texture(t_txt *text, char *str);
+void	check_textures(t_vars *vars);
 char	*get_next_line(int fd);
 char	*skip_whitespace(char *str);
 int		is_a_whitespace(char *str);

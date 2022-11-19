@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/18 17:41:11 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/19 13:30:34 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,26 @@ void	init_textures(t_vars *vars)
 {
 	vars->so.img = mlx_xpm_file_to_image(vars->mlx, vars->txt->so,
 			&vars->so.height, &vars->so.width);
+	if (!vars->so.img)
+		ft_error("south xpm image invalid");
 	vars->so.addr = mlx_get_data_addr(vars->so.img, &vars->so.bpp,
 			&vars->so.line_length, &vars->so.endian);
 	vars->we.img = mlx_xpm_file_to_image(vars->mlx, vars->txt->we,
 			&vars->we.height, &vars->we.width);
+	if (!vars->we.img)
+		ft_error("west xpm image invalid");
 	vars->we.addr = mlx_get_data_addr(vars->we.img, &vars->we.bpp,
 			&vars->we.line_length, &vars->we.endian);
 	vars->no.img = mlx_xpm_file_to_image(vars->mlx, vars->txt->no,
 			&vars->no.height, &vars->no.width);
+	if (!vars->no.img)
+		ft_error("north xpm image invalid");
 	vars->no.addr = mlx_get_data_addr(vars->no.img, &vars->no.bpp,
 			&vars->no.line_length, &vars->no.endian);
 	vars->ea.img = mlx_xpm_file_to_image(vars->mlx, vars->txt->ea,
 			&vars->ea.height, &vars->ea.width);
+	if (!vars->ea.img)
+		ft_error("east xpm image invalid");
 	vars->ea.addr = mlx_get_data_addr(vars->ea.img, &vars->ea.bpp,
 			&vars->ea.line_length, &vars->ea.endian);
 }
@@ -60,6 +68,7 @@ void	initialization(t_vars *vars, char **av)
 	vars->txt = init_txt();
 	map(&vars->txt, av[1]);
 	check_map(vars->txt);
+	check_textures(vars);
 	vars->width = vars->txt->length;
 	vars->height = vars->txt->height;
 	vars->mlx = mlx_init();
@@ -93,4 +102,6 @@ int	main(int ac, char **av)
 		mlx_hook(vars.win, 2, 0, keys_hook, &vars);
 		mlx_loop(vars.mlx);
 	}
+	else
+		ft_error("invalid number of arguments");
 }

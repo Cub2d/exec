@@ -1,7 +1,7 @@
 CC = @cc
 
 
-CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit 
 
 FILES = cub3d.c \
 		./srcs/dda_algho.c\
