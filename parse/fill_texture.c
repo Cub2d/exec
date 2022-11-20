@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:17:35 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/20 12:37:19 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/20 16:10:59 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	fill_no(char **split, t_txt *text, char *str)
 		if (text->no == NULL)
 			text->no = ft_strdup(split[1]);
 		else
-
 			ft_error("Tried to fill NO twice or more");
 	}
 	else
