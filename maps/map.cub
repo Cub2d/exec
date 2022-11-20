@@ -1,10 +1,22 @@
-NO ./textures/grey.xpm
-SO ./textures/red.xpm
-WE ./textures/hit.xpm
-EA ./textures/symbol.xpm
+      NO        ./textures/grey.xpm
 
-F 0,0,0
-C 243,196,207
+
+
+
+
+SO          ./textures/red.xpm 
+   WE              ./textures/hit.xpm
+
+   
+EA     ./textures/symbol.xpm
+
+F      0,0,0
+
+    
+
+
+
+C      243,196,207
 
                         11111111111111111111111111111
                         10000000000000000000000000001
