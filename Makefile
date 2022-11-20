@@ -31,7 +31,6 @@ FILES = cub3d.c \
 		./parse/extra_func/ft_strchr.c \
 		./parse/extra_func/ft_strjoin.c \
 		./parse/extra_func/ft_substr.c \
-		./parse/extra_func/ft_utils.c \
 
 
 NAME = cub3d
