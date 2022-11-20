@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:02:36 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/18 19:21:29 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/18 20:14:38 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	map_counter(t_txt *txt, char *s)
 	txt->map[0] = NULL;
 	txt->map[txt->counter] = NULL;
 	txt->height = txt->counter;
+	close(fd);
 	free(str);
 }
 

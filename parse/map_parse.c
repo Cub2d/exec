@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:51:28 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/18 19:22:18 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/20 13:22:51 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	get_texture(t_txt *text, char *str)
 		get_color(text, str);
 	else if (str[0] == '\0' && text->map[0] == NULL)
 		return ;
-	else if (str[0] == '1' || check_space(str) == OK)
+	else if ((str[0] == '1' || check_space(str) == OK) && check_if_filled_v2(text) == OK)
 		map_filler(text, str);
 	else if (str[0] == ' ')
 		return ;
-	else if (text->fill == text->counter)
+	else if (text->fill == text->counter && str[0] == '\0')
 		return ;
 	else
 		ft_error("Invalid Map Here");

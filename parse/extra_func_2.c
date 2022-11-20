@@ -6,7 +6,7 @@
 /*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:10:52 by zihirri           #+#    #+#             */
-/*   Updated: 2022/11/18 19:19:47 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/20 12:22:05 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	is_not_filled(t_txt *text)
 {
 	if (text->no == NULL || text->so == NULL
 		|| text->ea == NULL || text->we == NULL
-		|| text->c == NULL || text->f == NULL)
+		|| text->c == NULL || text->f == NULL || text->map[0] == NULL)
 		return (OK);
 	else
 		return (KO);
