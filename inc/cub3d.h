@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/20 12:42:12 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/20 14:45:36 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@
 
 # define OK 0
 # define KO 1
-
-typedef struct s_gnl {
-	char	c;
-	char	*str;
-	int		read_return;
-	char	*temp;
-}				t_gnl;
 
 typedef struct s_data {
 	void	*img;
@@ -106,15 +99,6 @@ typedef struct s_point {
 	double	x;
 	double	y;
 }	t_point;
-typedef struct s_dda {
-	double	xinc;
-	double	yinc;
-	int		x;
-	int		y;
-	int		ix;
-	int		iy;
-	int		steps;
-}				t_dda;
 
 t_point	new_p(double x, double y);
 t_point	vertical_point(t_vars *vars, double castangle);
