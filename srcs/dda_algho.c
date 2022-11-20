@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algho.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:54:00 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/16 15:42:32 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/20 13:39:56 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ screen relying on the distance to it */
 void	calculate_wall_height(t_point a, t_vars *vars)
 {
 	double	distance;
-	double	plandist;
+	double	plane_dist;
 
 	distance = sqrt((a.x - vars->x) * (a.x - vars->x)
 			+ (a.y - vars->y) * (a.y - vars->y));
 	distance = distance * cos(vars->rayangle * M_PI / 180);
-	plandist = WIN_WIDTH_2 / tan(30 * M_PI / 180);
-	vars->wallheight = (TILE / distance) * plandist;
+	plane_dist = WIN_WIDTH_2 / tan(30 * M_PI / 180);
+	vars->wallheight = (TILE / distance) * plane_dist;
 	if (!distance || vars->wallheight < 0)
 		vars->wallheight = WIN_WIDTH;
 	display_ray(vars->wallheight / 2, vars, a);
