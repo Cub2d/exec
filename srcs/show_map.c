@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:44:54 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/16 15:47:23 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/19 12:57:10 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void	check_player_position(t_vars *vars, int a, int b)
 	if (c == 'E' || c == 'N' || c == 'W' || c == 'S')
 	{
 		if (c == 'E')
-			vars->angle = 180;
+			vars->angle = 0;
 		if (c == 'N')
 			vars->angle = 270;
 		if (c == 'W')
-			vars->angle = 0;
+			vars->angle = 180;
 		if (c == 'S')
 			vars->angle = 90;
 		vars->txt->map[a][b] = '0';

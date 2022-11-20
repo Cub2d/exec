@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:03:21 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/18 19:03:09 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/20 12:42:12 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIN_WIDTH 1200
 # define WIN_WIDTH_2 600
 # define ROTATE_SPEED 3
-# define MOUVEMENT_SPEED 12
+# define MOUVEMENT 12
 # define TILE 64
 # define TILE_2 32
 # define M_SCALE 10
@@ -125,6 +125,8 @@ void	display_ray(double wallheight, t_vars *vars, t_point a);
 void	water_drop(t_vars *vars, t_point a);
 void	rotate_left(t_vars *vars, int speed);
 void	rotate_right(t_vars *vars, int speed);
+void	move_right(t_vars *vars);
+void	move_left(t_vars *vars);
 void	ft_line_counter(t_vars *vars);
 void	player_direction(t_vars *vars, t_point a, t_point b);
 void	print_minimap(t_vars *vars);
@@ -165,6 +167,7 @@ void	map(t_txt **txt, char *s);
 void	get_colors(t_txt *text, char *str);
 void	check_if_filled(t_txt *txt);
 void	get_texture(t_txt *text, char *str);
+void	check_textures(t_vars *vars);
 char	*get_next_line(int fd);
 char	*skip_whitespace(char *str);
 int		is_a_whitespace(char *str);

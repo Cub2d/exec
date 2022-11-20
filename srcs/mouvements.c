@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouvements.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:23:07 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/15 15:44:05 by zihirri          ###   ########.fr       */
+/*   Updated: 2022/11/20 12:41:30 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	move_up(t_vars *vars)
 	int	cx;
 	int	cy;
 
-	x = (vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / TILE;
+	x = (vars->x + (MOUVEMENT * cos(vars->angle * M_PI / 180))) / TILE;
 	cx = vars->x / TILE;
-	y = (vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / TILE;
+	y = (vars->y + (MOUVEMENT * sin(vars->angle * M_PI / 180))) / TILE;
 	cy = vars->y / TILE;
 	if (vars->txt->map[cy + vars->face][cx] == '1'
 		&& vars->txt->map[cy][cx + vars->side] == '1')
@@ -31,8 +31,8 @@ void	move_up(t_vars *vars)
 	}
 	if (vars->txt->map[y][x] != '1')
 	{
-		vars->x = vars->x + (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180));
-		vars->y = vars->y + (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180));
+		vars->x = vars->x + (MOUVEMENT * cos(vars->angle * M_PI / 180));
+		vars->y = vars->y + (MOUVEMENT * sin(vars->angle * M_PI / 180));
 		rays(vars);
 	}
 }
@@ -44,9 +44,9 @@ void	move_down(t_vars *vars)
 	int	cx;
 	int	cy;
 
-	x = (vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180))) / TILE;
+	x = (vars->x - (MOUVEMENT * cos(vars->angle * M_PI / 180))) / TILE;
 	cx = vars->x / TILE;
-	y = (vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180))) / TILE;
+	y = (vars->y - (MOUVEMENT * sin(vars->angle * M_PI / 180))) / TILE;
 	cy = vars->y / TILE;
 	if (vars->txt->map[cy - vars->face][cx] == '1'
 		&& vars->txt->map[cy][cx - vars->side] == '1')
@@ -56,8 +56,8 @@ void	move_down(t_vars *vars)
 	}
 	if (vars->txt->map[y][x] != '1')
 	{
-		vars->x = vars->x - (MOUVEMENT_SPEED * cos(vars->angle * M_PI / 180));
-		vars->y = vars->y - (MOUVEMENT_SPEED * sin(vars->angle * M_PI / 180));
+		vars->x = vars->x - (MOUVEMENT * cos(vars->angle * M_PI / 180));
+		vars->y = vars->y - (MOUVEMENT * sin(vars->angle * M_PI / 180));
 		rays(vars);
 	}
 }
@@ -106,5 +106,9 @@ int	keys_hook(int key, t_vars *vars)
 		rotate_right(vars, ROTATE_SPEED);
 	if (key == 123)
 		rotate_left(vars, ROTATE_SPEED);
+	if (key == 0)
+		move_left(vars);
+	if (key == 2)
+		move_right(vars);
 	return (0);
 }
