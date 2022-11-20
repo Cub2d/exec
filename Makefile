@@ -8,6 +8,7 @@ FILES = cub3d.c \
 		./srcs/utils.c\
 		./srcs/utils_2.c\
 		./srcs/mouvements.c \
+		./srcs/mouvements_2.c \
 		./srcs/show_map.c \
 		./srcs/drawing_circle.c \
 		./srcs/mini_map.c \
