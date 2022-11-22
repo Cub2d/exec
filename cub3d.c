@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: zihirri <zihirri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:40:48 by cjad              #+#    #+#             */
-/*   Updated: 2022/11/19 13:30:34 by cjad             ###   ########.fr       */
+/*   Updated: 2022/11/22 13:41:24 by zihirri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	initialization(t_vars *vars, char **av)
 {
 	vars->txt = init_txt();
 	map(&vars->txt, av[1]);
+	if (vars->txt->map[0] == NULL)
+		ft_error("No Map") ; 
 	check_map(vars->txt);
 	check_textures(vars);
 	vars->width = vars->txt->length;
